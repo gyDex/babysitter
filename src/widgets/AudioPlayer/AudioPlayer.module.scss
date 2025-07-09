@@ -1,0 +1,29 @@
+.audio-player {
+    display: flex;
+    border-radius: 16px;
+    background-color: #EFF0F5;
+    padding: 8px;
+    align-items: center;
+    gap: 15px;
+    width: max-content;
+    overflow: hidden;
+
+    &__right {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+    }
+
+    &__duration {
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 100%;
+        letter-spacing: 0.23px;
+        text-align: left;
+        color: #431DED;
+    }
+
+    @media screen and (max-width: $tablets) {
+        max-width: 100%;
+    }
+}
