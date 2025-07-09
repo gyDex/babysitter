@@ -4,6 +4,7 @@ import "./globals.css";
 import '../shared/styles/reset.css';
 import '../shared/styles/main.scss';
 import Header from "@/widgets/Header/Header";
+import "/public/fonts/Transforma Mix/styles.css";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -27,9 +28,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <head>
-        <link rel="stylesheet" href="/fonts/Transforma Mix/styles.css" />
-      </head>
       <body
         className={`${inter.variable} ${onest.variable}  antialiased`}
       >
