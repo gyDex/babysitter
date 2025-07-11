@@ -4,7 +4,7 @@ import "./globals.css";
 import '../shared/styles/reset.css';
 import '../shared/styles/main.scss';
 import Header from "@/widgets/Header/Header";
-import "/public/fonts/Transforma Mix/styles.css";
+import "../../public/fonts/Transforma Mix/styles.css";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -27,7 +27,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="ru">
       <body
         className={`${inter.variable} ${onest.variable}  antialiased`}
       >

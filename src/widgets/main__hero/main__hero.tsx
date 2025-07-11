@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import styles from './main__hero.module.scss'
+import Button from '@/shared/compontents/Button'
 
 const Main__Hero = () => {
   return (
@@ -29,11 +30,7 @@ const Main__Hero = () => {
                   <p className={styles['main-hero__description']}>Подобрали более 3 000 нянь, которые любят детей не по инструкции, а по-настоящему</p>
               </div>
 
-              <button className={styles['main-hero__btn']}>
-                  Найти няню
-
-                  <Image src={'/images/main-hero/heart.png'} alt="heart" width={22} height={22} />
-              </button>
+              <Button text='Найти няню' type='button'/>
           </div>
         </div>
 

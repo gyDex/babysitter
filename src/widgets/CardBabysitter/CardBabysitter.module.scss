@@ -40,7 +40,6 @@
         margin-top: 32px;
 
         align-items: center;
-        justify-content: center;
     }
 
     &__text1 {
@@ -80,7 +79,7 @@
     &__top-info-left, &__top-info-right {
         display: flex;
         flex-direction: column;
-        gap: 2px;
+        gap: 13px;
 
         font-family: Inter;
         font-weight: 400;
@@ -210,8 +209,8 @@
 
             position: relative;
             top: -0.1em;
-            margin-right: 8px;
-            margin-left: 8px;
+            margin-left: 3px;
+            margin-right: 6px;
         }
     }
 
@@ -225,6 +224,11 @@
 
     @media screen and (min-width: $tablets) {
         padding: 20px;
+
+        &__avatar::before {
+            bottom: -3px;
+            right: -3px;
+        }
         
         &__text1 {
             margin-top:32px;

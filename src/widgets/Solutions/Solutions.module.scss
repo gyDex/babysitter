@@ -1,4 +1,25 @@
 .solutions {
+  padding: 60px 20px;
+  position: relative;
+  overflow: visible;
+}
+
+.solutions__list {
+  list-style: none;
+  position: relative;
+  height: 180px; /* высота блока под элементы */
+  padding: 0;
+  margin: 0;
+}
+
+.solutions__item {
+  user-select: none;
+  cursor: default;
+  /* можно добавить transition для плавности */
+  will-change: transform;
+}
+
+.solutions {
     
     width: 100%;
 
@@ -26,7 +47,7 @@
     }
 
     &__image-wrap {
-        width: 30%;
+        width: 40%;
         height: 100%;
         border-radius: 16px;
         overflow: hidden;
@@ -87,7 +108,8 @@
     }
 
     @media screen and (min-width: $desktops-sm) {
-
+        padding-bottom: 0px;
+        
         &__inner {
             padding: 48px;
             display: flex;
