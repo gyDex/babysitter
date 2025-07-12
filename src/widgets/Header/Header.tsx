@@ -47,8 +47,22 @@ const Header = () => {
                 </nav>
 
                 <button onClick={() => {
-                    headerState.toggleTransparent();
-                    headerState.toggleHeaderMenu();}} className={styles['header__btn']}>
+                    if (headerState.isOpenMenu) {
+                        headerState.setOpenMenu(false);
+                        if (headerState.NotFirstBlock) {
+                            headerState.setTransparent(false)
+                        }
+                        if (!headerState.NotFirstBlock) {
+                            headerState.setTransparent(true)
+                        }
+                    }
+                    else {
+                        headerState.setOpenMenu(true)
+                        if (!headerState.NotFirstBlock) {
+                            headerState.setTransparent(false)
+                        }
+                    }
+                    }} className={styles['header__btn']}>
                         {
                             !headerState.isOpenMenu ? 
                             <Image src={'/images/header/burger.svg'} alt="Logo" width={42} height={42} />

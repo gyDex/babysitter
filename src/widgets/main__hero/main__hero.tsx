@@ -19,8 +19,10 @@ const Main__Hero = () => {
   useEffect(() => {
     if (isInView) {
       headerState.setTransparent(true);
+      headerState.setNotFirstBlock(false);
     } else {
       headerState.setTransparent(false);
+      headerState.setNotFirstBlock(true);
     }
   }, [isInView]);
 

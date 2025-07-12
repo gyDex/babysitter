@@ -7,6 +7,9 @@ interface HeaderState {
   isOpenMenu: boolean,
   setOpenMenu: (isOpenMenu: boolean) => void,
 
+  NotFirstBlock: boolean,
+  setNotFirstBlock: (NotFirstBlock: boolean) => void,
+
   toggleHeaderMenu: () => void,
   toggleTransparent: () => void,
 }
@@ -16,7 +19,9 @@ export const useHeader = create<HeaderState>()((set) => ({
   setTransparent: (isTransparent) => set(() => ({ isTransparent: isTransparent })),
 
   isOpenMenu: false,
+  NotFirstBlock: false,
   setOpenMenu: (isOpenMenu) => set(() => ({ isOpenMenu: isOpenMenu })),
   toggleHeaderMenu: () => set((state) => ({ isOpenMenu: !state.isOpenMenu })),
   toggleTransparent: () => set((state) => ({ isTransparent: !state.isTransparent })),
+  setNotFirstBlock: (NotFirstBlock) => set((state) => ({ NotFirstBlock: NotFirstBlock })),
 }))
