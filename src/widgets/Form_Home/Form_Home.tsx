@@ -13,7 +13,7 @@ const Form_Home = () => {
                     Подберем няню, которая полюбит вашего ребенка как своего
                 </h2>
 
-                <Link href='/' className={styles['form-home__link']}>
+                <Link href='https://nannybabystory.ru/' className={styles['form-home__link']}>
                     <Image className={styles['form-home__link-icon']} height={100} width={100} src={'/images/form_home/heart.png'}   alt="" />
 
                     https://nannybabystory.ru/

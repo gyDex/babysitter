@@ -179,10 +179,11 @@
     &__avatar::before {
         content: '';
         position: absolute;
-        bottom: 0;
-        right: 0;
-        width: 25px;
-        height: 25px;
+
+        width: 15px;
+        height: 15px;
+        bottom: -4px;
+        right: -2px;
         border: white 2px solid;
         border-radius: 100%;
         background-color: #12B76A;
@@ -216,20 +217,42 @@
 
     &__address {
         font-size: 12px;
+        font-family: Inter;
+        font-weight: 400;
+        font-style: normal;
+        font-size: 12px;
+        line-height: 20px;
+        letter-spacing: 0px;
+    }
+
+    &__top-labels_mob {
+        margin-top: 16px;
+    }
+
+    &__top-info-left {
+        gap: 2px;
     }
 
     &__top-info-right {
         display: none;
     }
 
+    @media screen and (max-width: $tablets) {
+        &__top {
+            margin-bottom: 5px;
+        }
+    }
+
     @media screen and (min-width: $tablets) {
         padding: 20px;
+
 
         &__avatar::before {
             bottom: -3px;
             right: -3px;
         }
-        
+
+
         &__text1 {
             margin-top:32px;
         }
@@ -286,6 +309,9 @@
         &__avatar::before {
             width: 25px;
             height: 25px;
+
+            bottom: 0;
+            right: 0;
         }
 
         &__description {

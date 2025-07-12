@@ -8,6 +8,7 @@
         max-width: 1200px;
         height: max-content;
         position: relative;
+        color: white;
     }
 
     &__item-first, &__item-first-mob, &__item-first-desk {
@@ -27,7 +28,10 @@
     &__item-first-mob {
         padding: 24px;
         min-height: 380px;
+        width: 100%;
+
         display: flex !important;
+        position: relative;
     }
 
     &__item-first-desk {
@@ -158,6 +162,16 @@
         margin-bottom: 24px;
     }
 
+            
+        &__nav, &__nav-mob, &__nav-desk {
+            display: flex;
+            width: 100%;
+            justify-content: end;
+            gap: 8px;
+
+            margin-top: 24px;
+        }
+
     @media screen and (min-width: $desktops-sm) {
         margin-top: 64px;
 
@@ -181,33 +195,30 @@
             padding-top: 0 !important;
         }
 
-        
-        &__nav {
-            display: flex;
-            width: 100%;
-            justify-content: end;
-            gap: 8px;
+        &__nav-mob {
+            display: none;
+        }
 
-            margin-top: 24px;
+        &__nav-desk {
+            display: flex;
         }
 
         flex-direction: column;
         justify-content: center;
         align-items: center;
         width: 100%;
+        
     }
 
     @media screen and (max-width: $desktops-sm) {
         &__item-first-desk {
             display: none !important;
         }
-
-        &__nav {
-            display: none;
-        }
+        
 
         &__item-first-mob {
             display: flex !important;
+            margin-top: 0px;
         }
 
         &__item-first {
@@ -224,13 +235,24 @@
             margin-top: 54px;
         }
 
+        &__nav-mob {
+            display: flex;
+            margin-bottom: 16px;
+
+        }
+
+        &__nav-desk {
+            display: none;
+        }
+
         &__container {
             min-height: 380px;
             padding: 16px;
         }
 
         &__item-first {
-             min-height: 380px;
+            min-height: 380px;
+
         }
 
         &__item {

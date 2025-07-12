@@ -1,11 +1,17 @@
+'use client'
+
 import Image from 'next/image';
 import styles from './Header.module.scss'
 import Link from 'next/link';
+import { useHeader } from '@/entities/FAQ/stores/useHeader';
 
 const Header = () => {
+    const headerState = useHeader();
+  console.log(headerState.isOpenMenu)
+
     return (
         <div className={styles.header}>
-            <div className={styles.header__inner}>
+            <div className={headerState.isTransparent ? styles['header__inner_transparent'] : styles.header__inner}>
                 <Link href={'/'}>
                      <Image src={'/images/header/logo.svg'} alt="Logo" width={186} height={37} />
                 </Link>
@@ -40,8 +46,15 @@ const Header = () => {
                     </ul>
                 </nav>
 
-                <button className={styles['header__btn']}>
-                     <Image src={'/images/header/burger.svg'} alt="Logo" width={42} height={42} />
+                <button onClick={() => {
+                    headerState.toggleTransparent();
+                    headerState.toggleHeaderMenu();}} className={styles['header__btn']}>
+                        {
+                            !headerState.isOpenMenu ? 
+                            <Image src={'/images/header/burger.svg'} alt="Logo" width={42} height={42} />
+                            :
+                            <Image src={'/images/header/close.svg'} alt="Logo" width={42} height={42} />
+                        }
                 </button>
             </div>
         </div>

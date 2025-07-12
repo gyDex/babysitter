@@ -1,10 +1,35 @@
+'use client'
+
 import Image from 'next/image'
 import styles from './main__hero.module.scss'
 import Button from '@/shared/compontents/Button'
+import { motion, useInView } from 'framer-motion';
+import { useHeader } from '@/entities/FAQ/stores/useHeader';
+import { useEffect, useRef } from 'react';
 
 const Main__Hero = () => {
+  const headerState = useHeader();
+  const ref = useRef(null);
+
+  const isInView = useInView(ref, {
+    once: false, 
+    margin: '25px 0px', 
+  });
+
+  useEffect(() => {
+    if (isInView) {
+      headerState.setTransparent(true);
+    } else {
+      headerState.setTransparent(false);
+    }
+  }, [isInView]);
+
+
   return (
-    <section className={styles['main-hero']}>
+    <motion.section 
+    ref={ref} 
+    viewport={{ amount: 0.5 }}
+    className={styles['main-hero']}>
         <div className={styles['main-hero__bg']}>
           <video
             src="/images/main-hero/video.mp4"
@@ -34,7 +59,7 @@ const Main__Hero = () => {
           </div>
         </div>
 
-    </section>
+    </motion.section>
   )
 }
 

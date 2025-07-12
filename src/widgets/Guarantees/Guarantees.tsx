@@ -2,28 +2,55 @@
 
 import Image from 'next/image';
 import styles from './Guarantees.module.scss';
-import { motion, useAnimation, useInView } from 'framer-motion'
-import { useEffect, useRef } from 'react';
+import { motion, useAnimation, useInView, useScroll, useTransform } from 'framer-motion'
+import { useEffect, useRef, useState } from 'react';
 
 const Guarantees = () => {
     const ref = useRef(null);
-  const inView = useInView(ref, { once: true }); // один раз
-  const controls = useAnimation();
+    const inView = useInView(ref, { once: true }); // один раз
+    const controls = useAnimation();
+
+    const [isDesktop, setIsDesktop] = useState(false);
 
   useEffect(() => {
-    if (inView) {
+    if (inView && isDesktop) {
       controls.start('visible');
     }
-  }, [inView, controls]);
+  }, [inView, isDesktop, controls]);
+
+    useEffect(() => {
+        const handleResize = () => {
+        setIsDesktop(window.innerWidth >= 1024); // Tailwind breakpoint `lg`
+        };
+
+        handleResize(); // при монтировании
+        window.addEventListener('resize', handleResize);
+
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
+    const sectionRef = useRef(null);
+
+    const { scrollYProgress } = useScroll({
+        target: sectionRef,
+        offset: ["start 10%", "end 0"],
+    });
+
+    const y = useTransform(scrollYProgress, [0, 1], [0, 650]);
 
   return (
-    <section className={styles['guarantees']}>
-        <motion.ul className={styles['guarantees__list']}>
-            <motion.li   initial={{ opacity: 0, y: 50 }}
-  whileInView={{ opacity: 1, y: 0 }}
-  viewport={{ once: true, amount: 0.2 }}
-  transition={{ duration: 0.6, delay: 0.1 }} className={styles['guarantees__item-banner']}>
-                <Image className={styles['guarantees__item-image-bg']} src={'/images/guarantess/image.png'} height={100} width={100} alt='' />
+    <motion.section 
+        className={styles['guarantees']}>
+                <motion.ul className={styles['guarantees__list']}>
+    <motion.li ref={sectionRef}  initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.6, delay: 0.1 }}
+            style={{
+                y: isDesktop ? y : 0,
+            }} 
+              className={styles['guarantees__item-banner']}>
+                <Image className={styles['guarantees__item-image-bg']} src={'/images/guarantess/image.png'} height={580} quality={100} width={580} alt='' />
 
                 <span className={styles['guarantees__item-banner-text']}>
                     Проверяем каждую няню, как для своего ребенка
@@ -113,7 +140,7 @@ const Guarantees = () => {
                 </div>
             </motion.li>
         </motion.ul>
-    </section>
+    </motion.section>
   )
 }
 

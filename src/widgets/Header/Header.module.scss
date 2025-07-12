@@ -1,4 +1,8 @@
-.header {
+.header__inner_transparent
+{
+    background-color: #FFFFFF4D !important;
+}
+.header   {
     width: 100%;
     display: flex;
     align-items: center;
@@ -9,7 +13,7 @@
     padding-top: 17px;
     padding-inline: 12px;
 
-    &__inner {
+    &__inner, &__inner_transparent {
         width: 100%;
         max-width: 1240px;
         min-height: 54px;
@@ -30,7 +34,7 @@
         padding-right: 4px;
     }
 
-    &__inner a img {
+    &__inner a img, &__inner_transparent a img {
         height: 30px;
         width: 164px;
     }
@@ -52,6 +56,8 @@
         font-family: Inter;
         font-weight: 400;
         font-size: 14px;
+            color: white;
+
         line-height: 20px;
         letter-spacing: 0px;
     }
@@ -73,12 +79,12 @@
     }
 
     @media screen and (min-width: $tablets) {
-        &__inner {
+        &__inner, &__inner_transparent {
             min-height: 61px;
             padding-right: 20px;
         }
 
-        &__inner a img {
+        &__inner a img, &__inner_transparent a img {
             height: 37px;
             width: 186px;
         }

@@ -1,10 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Onest } from "next/font/google";
 import "./globals.css";
-import '../shared/styles/reset.css';
-import '../shared/styles/main.scss';
 import Header from "@/widgets/Header/Header";
-import "../../public/fonts/Transforma Mix/styles.css";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -23,18 +20,17 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="ru">
-      <body
-        className={`${inter.variable} ${onest.variable}  antialiased`}
-      >
+      <head>
+        <link rel="stylesheet" href="/fonts/TransformaMix/styles.css" />
+      </head>
+      <body className={`${inter.variable} ${onest.variable} antialiased`}>
         <Header />
-        <main>
-          {children}
-        </main>
+        <main>{children}</main>
       </body>
     </html>
   );

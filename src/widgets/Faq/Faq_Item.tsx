@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import styles from './Faq.module.scss';
 
 type Props = {
@@ -9,17 +10,16 @@ type Props = {
 }
 
 const FAQ_Item:React.FC<Props> = ({description,title}) => {
-
     const [isShow, setShow] = useState(false);
 
     return (
         <li onClick={() => setShow(prev => !prev)} className={styles['faq__item']}>
             <div className={styles['faq__item-top']}>
                 <span className={styles['faq__item-title']}>
-                   {title}
+                    {title}
                 </span>
 
-                <button  className={styles['faq__item-btn']}>
+                <button className={styles['faq__item-btn']}>
                     {
                         !isShow ?    
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -31,21 +31,25 @@ const FAQ_Item:React.FC<Props> = ({description,title}) => {
                             <rect x="14.3672" y="0.22168" width="2" height="20" transform="rotate(45 14.3672 0.22168)" fill="white"/>
                             <rect x="15.7812" y="14.3633" width="2" height="20" transform="rotate(135 15.7812 14.3633)" fill="white"/>
                         </svg>
-
                     }
-
-
                 </button>
             </div>
 
-            {
-                isShow && description !== null && description !== undefined &&
-                <div className={styles['faq__item-content']}>
-                    {description}
-                </div>
-            }
+            <AnimatePresence initial={false}>
+                {isShow && description && (
+                    <motion.div
+                        className={styles['faq__item-content']}
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: "auto" }}
+                        exit={{ opacity: 0, height: 0 }}
+                        transition={{ duration: 0.2, ease: "linear" }}
+                    >
+                        {description}
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </li>
     )
 }
 
-export default FAQ_Item
+export default FAQ_Item;

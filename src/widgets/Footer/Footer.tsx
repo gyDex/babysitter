@@ -1,3 +1,4 @@
+
 import Button from '@/shared/compontents/Button'
 import styles from './Footer.module.scss'
 import Link from 'next/link'
@@ -12,6 +13,7 @@ const Footer = () => {
                         Остались вопросы?
                     </h2>
 
+                    
                     <form className={styles['footer__form']} action="">
                         <input className={styles['footer__input']} placeholder='Email' type="text" />
 

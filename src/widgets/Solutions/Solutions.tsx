@@ -52,6 +52,7 @@ const Solutions = () => {
       const isMobile = window.innerWidth < 768;
       setItemHeight(isMobile ? 1000 : 180);
     };
+    
 
     handleResize(); // начальное значение
     window.addEventListener('resize', handleResize);
@@ -69,11 +70,24 @@ const Solutions = () => {
     return useTransform(scrollYProgress, [start, end], [i * itemHeight, 0]);
   });
 
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  useEffect(() => {
+      const handleResize = () => {
+      setIsDesktop(window.innerWidth >= 1024); // Tailwind breakpoint `lg`
+      };
+
+      handleResize(); // при монтировании
+      window.addEventListener('resize', handleResize);
+
+      return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   return (
     <section
       ref={sectionRef}
       className={styles['solutions']}
-      style={{ height: '250vh', position: 'relative' }}
+      style={{ height: isDesktop ? '250vh' : 'fit-content', position: 'relative' }}
     >
       <div
         className={styles['solutions__inner']}
@@ -87,7 +101,7 @@ const Solutions = () => {
           alignItems: 'center',
         }}
       >
-        <h2 className={styles['solutions__title']}>
+        <h2 style={{ paddingTop:  '40px' }} className={styles['solutions__title']}>
           Не просто освобождаем вам время, а строим успешное будущее вашего ребёнка
         </h2>
 
@@ -96,8 +110,9 @@ const Solutions = () => {
           style={{
             position: 'relative',
             width: '100%',
+            top: isDesktop ?  40 : 0,
             maxWidth: 792,
-            height: listHeight,
+            height: isDesktop ? listHeight : 'fit-content',
             marginTop: 40,
           }}
         >
@@ -106,21 +121,24 @@ const Solutions = () => {
               key={i}
               className={styles['solutions__item']}
               style={{
-                position: 'absolute',
+                position: isDesktop ? 'absolute' : 'relative',
                 top: 0,
                 left: 0,
                 width: '100%',
-                y: yTransforms[i],
+                y: isDesktop ? yTransforms[i] : 0,
                 zIndex: items.length + i,
               }}
             >
               <div className={styles['solutions__image-wrap']}>
                 <Image
+                  quality={100}
+                  
                   className={styles['solutions__item-image']}
                   src={item.img}
                   alt=""
-                  width={200}
-                  height={200}
+                  width={282}
+                  height={145}
+              
                 />
               </div>
               <div className={styles['solutions__info']}>
