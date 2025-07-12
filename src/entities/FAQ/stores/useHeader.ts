@@ -23,5 +23,5 @@ export const useHeader = create<HeaderState>()((set) => ({
   setOpenMenu: (isOpenMenu) => set(() => ({ isOpenMenu: isOpenMenu })),
   toggleHeaderMenu: () => set((state) => ({ isOpenMenu: !state.isOpenMenu })),
   toggleTransparent: () => set((state) => ({ isTransparent: !state.isTransparent })),
-  setNotFirstBlock: (NotFirstBlock) => set((state) => ({ NotFirstBlock: NotFirstBlock })),
+  setNotFirstBlock: (NotFirstBlock) => set(() => ({ NotFirstBlock: NotFirstBlock })),
 }))
