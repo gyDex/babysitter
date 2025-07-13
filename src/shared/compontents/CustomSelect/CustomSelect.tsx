@@ -44,8 +44,8 @@ export const CustomSelect:React.FC<Props> = ({items, title}) => {
       <SelectContent className="select min-w-[214px] border-[#7C8092] border-[1px] rounded-[16px]">
         <SelectGroup>
           {
-              items.map((item) => <>
-                  <SelectItem className="!text-[#7C8092]  bg-transparent focus-within:!bg-transparent hover:!bg-transparent flex justify-between items-center" value={item.id}>
+              items.map((item, i) => <>
+                  <SelectItem key={i} className="!text-[#7C8092]  bg-transparent focus-within:!bg-transparent hover:!bg-transparent flex justify-between items-center" value={item.id}>
                     {item.name}
                     
 

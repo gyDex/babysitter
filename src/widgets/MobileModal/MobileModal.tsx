@@ -2,22 +2,40 @@
 
 import Button from '@/shared/compontents/Button'
 import styles from './MobileModal.module.scss'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion, AnimatePresence, useMotionValue } from 'framer-motion'
+import { useEffect } from 'react'
 
 const MobileModal = ({
   isOpen,
   setOpen,
+  children,
+  title,next
 }: {
   isOpen: boolean
-  setOpen: (open: boolean) => void
+  setOpen: (open: boolean, type:string) => void,
+  next: () => void,
+  children?: React.ReactNode,
+  title: string,
 }) => {
+  const y = useMotionValue(0)
+
   const handleOverlayClick = () => {
-    setOpen(false)
+    setOpen(false, 'role')
   }
 
   const stopClickPropagation = (e: React.MouseEvent) => {
     e.stopPropagation()
   }
+
+  useEffect(() => {
+    const unsubscribe = y.onChange((latest) => {
+      if (latest < 0) {
+        y.set(0) 
+      }
+    })
+
+    return () => unsubscribe()
+  }, [y])
 
   return (
     <AnimatePresence>
@@ -30,25 +48,38 @@ const MobileModal = ({
             animate={{ y: 0 }}
             exit={{ y: '100%' }}
             transition={{ duration: 0.3, ease: 'easeInOut' }}
+            drag="y"
+            style={{ y }}
+            dragElastic={0.3}
+            onDragEnd={(event, info) => {
+              if (info.offset.y > 0) {
+                setOpen(false, '');
+              }
+            }}
+            dragMomentum={false}
           >
             <div className={styles['modal-mobile__top']}>
-                <div className={styles['modal-mobile__top-line']}></div>
+              <div className={styles['modal-mobile__top-line']}></div>
             </div>
 
             <div className={styles['modal-mobile__content']}>
-                <div className={styles['modal-mobile__content-top']}>
-                    <h2 className={styles['modal-mobile__title']}>Ваш город</h2>
-                    <button onClick={handleOverlayClick} className={styles['mobile-modal__content-btn']}>
-                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <rect width="32" height="32" rx="8" fill="#EFF0F5"/>
-                            <path d="M20 12L12 20" stroke="#191816" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M12 12L20 20" stroke="#191816" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </button>
-                </div>
-                <Button text="Сохранить" variation="second" type="button" />
-            </div>
+              <div className={styles['modal-mobile__content-top']}>
+                <h2 className={styles['modal-mobile__title']}>{title}</h2>
+                <button
+                  onClick={handleOverlayClick}
+                  className={styles['mobile-modal__content-btn']}
+                >
+                  <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                    <rect width="32" height="32" rx="8" fill="#EFF0F5" />
+                    <path d="M20 12L12 20" stroke="#191816" strokeWidth="2" />
+                    <path d="M12 12L20 20" stroke="#191816" strokeWidth="2" />
+                  </svg>
+                </button>
+              </div>
 
+              {children}
+              <Button onClick={next} text="Сохранить" variation="second" type="button" />
+            </div>
           </motion.div>
         </div>
       )}

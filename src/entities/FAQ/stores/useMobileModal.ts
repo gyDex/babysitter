@@ -2,10 +2,12 @@ import { create } from 'zustand'
 
 interface MobileModalState {
   isOpen: boolean,
-  setOpen: (isOpen: boolean) => void
+  type: string,
+  setOpen: (isOpen: boolean, type: string) => void
 }
 
 export const useMobileState = create<MobileModalState>()((set) => ({
   isOpen: true,
-  setOpen: (isOpen) => set(() => ({ isOpen: isOpen })),
+  type: '',
+  setOpen: (isOpen, type) => set(() => ({ isOpen: isOpen, type })),
 }))
