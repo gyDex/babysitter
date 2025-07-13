@@ -12,12 +12,24 @@ const HeaderMenu = () => {
   const x = useTransform(xValue, (val) => val)
 
   useEffect(() => {
-    const controls = animate(xValue, header.isOpenMenu ? 0 : 1600, {
-      duration: 0.4,
-      ease: 'easeInOut',
+    const controls = animate(xValue, header.isOpenMenu ? 0 :  window.innerWidth, {
+      duration: 0.25,
+      ease: 'linear',
     })
     return controls.stop
   }, [header.isOpenMenu])
+
+  useEffect(() => {
+  if (header.isOpenMenu) {
+    document.body.style.overflow = 'hidden'
+  } else {
+    document.body.style.overflow = 'auto'
+  }
+
+  return () => {
+    document.body.style.overflow = 'auto'
+  }
+}, [header.isOpenMenu])
 
   return (
     <motion.div

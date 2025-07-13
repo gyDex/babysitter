@@ -1,9 +1,10 @@
 .header-menu {
     background-color: #F1EFE5;
     position: fixed;
-    z-index: 100;
+    z-index: 150;
     width: 100svw;
     height: 100svh;
+    pointer-events: none;
 
     &__container {
         padding-inline: 16px;
@@ -68,5 +69,8 @@
             color: #252525B2;
         }
     }
-    
+
+    @media screen and (min-width: $desktops-sm) {
+        display: none;
+    }
 }

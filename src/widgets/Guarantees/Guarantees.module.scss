@@ -58,7 +58,7 @@
 
     &__image-wrap {
         min-width: 100%;
-        min-height: 150px;
+        min-height: 170px;
         position: relative;
         overflow: hidden;
         margin-top: auto;
@@ -79,7 +79,7 @@
     &__item-image-2 {
         width: 240px;
         position: absolute;
-        top: -20px;
+        top: 0px;
         right: 70px;
     }
 
@@ -108,7 +108,7 @@
         object-fit: cover;
         transform: rotateZ(-20deg);
 
-        top: 50px;
+        top: 25px;
         right: -10px;
     }
 
@@ -195,6 +195,11 @@
         &__item-banner-text {
             font-size: 40px;
             line-height: 48px;
+        }
+
+        &__item-image_heart {
+            top: 45px;
+            right: -13px;
         }
 
         &__list {
