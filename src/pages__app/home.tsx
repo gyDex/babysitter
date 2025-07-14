@@ -27,7 +27,7 @@ export const HomePage = () => {
         <>
             <HeaderMenu />
 
-            <div className="min-[900px]:hidden">
+            <div className="min-[1200px]:hidden">
                 <MobileModal title={'Выбор роли'} isOpen={mobileState.isOpen && mobileState.type === ''} next={() => mobileState.setOpen(true, 'city')} setOpen={mobileState.setOpen}>
                     <RadioGroup>
                         <div className="mt-[16px] flex gap-[12px] flex-col" role="radiogroup" aria-label="Example radio group">

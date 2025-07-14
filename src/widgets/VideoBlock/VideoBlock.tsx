@@ -3,7 +3,7 @@ import styles from './VideoBlock.module.scss'
 
 const VideoBlock = () => {
   return (
-    <section className={styles['video-block']}>
+    <section id='founder' className={styles['video-block']}>
         <div className={styles['video-block__container']}>
             <h1 className={styles['video-block__title']}>
                 Платформа, которую создала мама, чтобы другие мамы смогли выдохнуть

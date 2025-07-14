@@ -4,7 +4,6 @@
     z-index: 150;
     width: 100svw;
     height: 100svh;
-    pointer-events: none;
 
     &__container {
         padding-inline: 16px;
@@ -70,7 +69,7 @@
         }
     }
 
-    @media screen and (min-width: $desktops-sm) {
+    @media screen and (min-width: $desktops-md) {
         display: none;
     }
 }

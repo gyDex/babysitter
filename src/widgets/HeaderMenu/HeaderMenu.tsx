@@ -38,11 +38,13 @@ const HeaderMenu = () => {
     >
       <div className={styles['header-menu__container']}>
         <ul className={styles['header-menu__list']}>
-          <li className={styles['header-menu__item']}><a href="#">О нас</a></li>
-          <li className={styles['header-menu__item']}><a href="#">Регистрация для нянь</a></li>
-          <li className={styles['header-menu__item']}><a href="#">База нянь</a></li>
-          <li className={styles['header-menu__item']}><a href="#">Об основателе</a></li>
-          <li className={styles['header-menu__item']}><a href="#">Этапы работ</a></li>
+          <li onClick={() => header.setOpenMenu(false)} className={styles['header-menu__item']}>
+            <a href="#about">О нас</a>
+          </li>
+          <li onClick={() => header.setOpenMenu(false)} className={styles['header-menu__item']}><a href="#">Регистрация для нянь</a></li>
+          <li onClick={() => header.setOpenMenu(false)} className={styles['header-menu__item']}><a href="#storage-babysitter">База нянь</a></li>
+          <li onClick={() => header.setOpenMenu(false)} className={styles['header-menu__item']}><a href="#founder">Об основателе</a></li>
+          <li onClick={() => header.setOpenMenu(false)} className={styles['header-menu__item']}><a href="#stages">Этапы работ</a></li>
         </ul>
 
         <div className={styles['header-menu__bottom']}>

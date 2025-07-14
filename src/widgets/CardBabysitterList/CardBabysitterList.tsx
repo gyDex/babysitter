@@ -5,7 +5,7 @@ import { CustomSelect } from '@/shared/compontents/CustomSelect/CustomSelect'
 
 const CardBabysitterList = () => {
   return (
-    <section className={styles['card-babysitters']}>
+    <section id='storage-babysitter' className={styles['card-babysitters']}>
         <div className={styles['card-babysitters__inner']}>
             <h2 className={styles['card-babysitters__title']}>Найдите няню, к которой потянется ваш ребенок</h2>
             

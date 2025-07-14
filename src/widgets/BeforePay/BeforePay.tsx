@@ -18,7 +18,7 @@ const variants = {
 
 const BeforePay = () => {
   return (
-    <section className={styles['before-pay']}>
+    <section  id='stages' className={styles['before-pay']}>
       <motion.h2
         className={styles['before-pay__title']}
         initial={{ opacity: 0, y: -20 }}

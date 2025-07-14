@@ -34,7 +34,7 @@ const Guarantees = () => {
   const variants = {
     fixed: {
       position: 'sticky',
-      top: 100, // например, высота шапки + отступ
+      top: 100, 
       left: 0,
       right: 0,
       zIndex: 100,
@@ -51,7 +51,7 @@ const Guarantees = () => {
   };
 
   return (
-    <motion.section 
+    <motion.section id='about'
         className={styles['guarantees']}>
                 <motion.ul className={styles['guarantees__list']}>
     <motion.li           ref={sectionRef}

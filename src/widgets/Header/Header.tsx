@@ -19,7 +19,7 @@ const Header = () => {
                 <nav className={styles.header__nav}>
                     <ul className={styles['header__nav-list']}>
                         <li className={styles['header__nav-item']}>
-                            <Link href={'/'}>
+                            <Link href={'#about'}>
                                 О нас
                             </Link>
                         </li>
@@ -29,17 +29,17 @@ const Header = () => {
                             </Link>
                         </li>
                         <li className={styles['header__nav-item']}>
-                            <Link href={'/'}>
+                            <Link href={'#storage-babysitter'}>
                                 База нянь
                             </Link>
                         </li>
                         <li className={styles['header__nav-item']}>
-                            <Link href={'/'}>
+                            <Link href={'#founder'}>
                                 Об основателе
                             </Link>
                         </li>
                         <li className={styles['header__nav-item']}>
-                            <Link href={'/'}>
+                            <Link href={'#stages'}>
                                 Этапы работ
                             </Link>
                         </li>

@@ -1,4 +1,8 @@
+
+
 .card-babysitters {
+    scroll-margin-top: 200px;
+
     background-image: url('../../../public/images/card-babysit/bg.png');
     background-size: cover;
     background-repeat: no-repeat;
@@ -9,6 +13,8 @@
 
     padding: 32px;
     padding-inline: 16px;
+    padding-top: 100px !important;
+
 
     &__list {
         display: flex;

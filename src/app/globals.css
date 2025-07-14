@@ -20,9 +20,20 @@
     }
 }
 
+[id] {
+  scroll-margin-top: 110px;
+}
+
+#storage-babysitter {
+  scroll-margin-top: 0px;
+}
 
 .block_beige {
     background-color: #F1EFE5;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 @theme inline {
