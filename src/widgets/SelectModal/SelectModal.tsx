@@ -5,6 +5,7 @@ import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectVa
 type Props = {
   items: Item[],
   title: string,
+  className?: string,
 }
 
 type Item = {
@@ -13,12 +14,12 @@ type Item = {
 }
 
 
-const SelectModal:React.FC<Props> = ({items, title})  => {
+const SelectModal:React.FC<Props> = ({items, title, className})  => {
   const [isOpen, setOpen] = useState(false) as any;    
 
   return (
     <Select  open={isOpen} onOpenChange={() => setOpen((prev: boolean) => !prev)}>
-      <SelectTrigger   className="select !text-[18px] !font-normal !mt-[16px] !shadow-none w-full min-h-[60px] flex items-center !text-[#D9D9D9] bg-[#FFFFFF] !border-[1px] !border-[#D4D4DD] rounded-[16px] max-[425px]:!mb-[0px] max-[425px]:mt-[24px]">
+      <SelectTrigger   className={`select !text-[18px] !font-normal !mt-[16px] !shadow-none w-full min-h-[60px] flex items-center !text-[#D9D9D9] bg-[#FFFFFF] !border-[1px] !border-[#D4D4DD] rounded-[16px] max-[425px]:!mb-[0px] max-[425px]:mt-[24px] ${className}`}>
         <SelectValue placeholder={title} />
         {
           !isOpen ?

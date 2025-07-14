@@ -7,7 +7,14 @@
   align-items: center;
   min-height: 60px;
 
+  font-family: Onest;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0px;
+
   &[data-state="checked"] {
     border: 2px solid #7733F4;
   }
 }
+

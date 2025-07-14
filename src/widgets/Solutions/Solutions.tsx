@@ -64,11 +64,21 @@ const Solutions = () => {
 
   const listHeight = useTransform(scrollYProgress, [0, 1], [items.length * itemHeight, itemHeight]);
 
-  const yTransforms = items.map((_, i) => {
-    const start = i * 0.1;
-    const end = start + 0.15;
-    return useTransform(scrollYProgress, [start, end], [i * itemHeight, 0]);
-  });
+const overlapOffset = 180;  // начальный большой отступ
+const tailOffset = 10;      // отступ при сложении (выпирание)
+const progress = useTransform(scrollYProgress, [0, 1], [0, 1]);
+
+const yTransforms = items.map((_, i) =>
+  useTransform(progress, (p) => {
+    const delay = i * 0.1;
+    // локальный прогресс для блока, с задержкой и ограничением от 0 до 1
+    const localP = Math.min(Math.max((p - delay) / 0.3, 0), 1);
+
+    // вычисляем итоговое смещение:
+    // плавно идём от overlapOffset к tailOffset
+    return (1 - localP) * i * overlapOffset + localP * i * tailOffset;
+  })
+);
 
   const [isDesktop, setIsDesktop] = useState(false);
 
@@ -87,7 +97,7 @@ const Solutions = () => {
     <section
       ref={sectionRef}
       className={styles['solutions']}
-      style={{ height: isDesktop ? '250vh' : 'fit-content', position: 'relative' }}
+      style={{ height: isDesktop ? `${items.length * 60 + 100}vh` : 'fit-content' }}
     >
       <div
         className={styles['solutions__inner']}
@@ -112,7 +122,7 @@ const Solutions = () => {
             width: '100%',
             top: isDesktop ?  40 : 0,
             maxWidth: 792,
-            height: isDesktop ? listHeight : 'fit-content',
+            height: isDesktop ? listHeight : `${items.length * 20 + 100}vh`,
             marginTop: 40,
           }}
         >
