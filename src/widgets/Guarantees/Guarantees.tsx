@@ -2,53 +2,63 @@
 
 import Image from 'next/image';
 import styles from './Guarantees.module.scss';
-import { motion, useAnimation, useInView, useScroll, useTransform } from 'framer-motion'
+import { motion, useAnimation, useInView } from 'framer-motion'
 import { useEffect, useRef, useState } from 'react';
 
 const Guarantees = () => {
-    const ref = useRef(null);
-    const inView = useInView(ref, { once: true }); // один раз
-    const controls = useAnimation();
+      const sectionRef = useRef(null);
+  const inView = useInView(sectionRef, { margin: '-1px' }); // когда весь элемент в зоне видимости
+  const controls = useAnimation();
 
-    const [isDesktop, setIsDesktop] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  useEffect(() => {
+    setIsDesktop(window.innerWidth >= 1024);
+
+    const handleResize = () => {
+      setIsDesktop(window.innerWidth >= 1024);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   useEffect(() => {
     if (inView && isDesktop) {
-      controls.start('visible');
+      controls.start('fixed');
+    } else {
+      controls.start('relative');
     }
   }, [inView, isDesktop, controls]);
 
-    useEffect(() => {
-        const handleResize = () => {
-        setIsDesktop(window.innerWidth >= 1024); // Tailwind breakpoint `lg`
-        };
-
-        handleResize(); // при монтировании
-        window.addEventListener('resize', handleResize);
-
-        return () => window.removeEventListener('resize', handleResize);
-    }, []);
-
-    const sectionRef = useRef(null);
-
-    const { scrollYProgress } = useScroll({
-        target: sectionRef,
-        offset: ["start 10%", "end 0"],
-    });
-
-    const y = useTransform(scrollYProgress, [0, 1], [0, 650]);
+  const variants = {
+    fixed: {
+      position: 'sticky',
+      top: 100, // например, высота шапки + отступ
+      left: 0,
+      right: 0,
+      zIndex: 100,
+      transition: { type: 'spring', stiffness: 100 },
+    },
+    relative: {
+      position: 'relative',
+      top: 0,
+      left: 0,
+      right: 0,
+      zIndex: 100,
+      transition: { type: 'spring', stiffness: 100 },
+    },
+  };
 
   return (
     <motion.section 
         className={styles['guarantees']}>
                 <motion.ul className={styles['guarantees__list']}>
-    <motion.li ref={sectionRef}  initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.2 }}
-        transition={{ duration: 0.6, delay: 0.1 }}
-            style={{
-                y: isDesktop ? y : 0,
-            }} 
+    <motion.li           ref={sectionRef}
+          initial="relative"
+          animate={controls}
+          variants={variants as any}
+
               className={styles['guarantees__item-banner']}>
                 <Image className={styles['guarantees__item-image-bg']} src={'/images/guarantess/image.png'} height={580} quality={100} width={580} alt='' />
 

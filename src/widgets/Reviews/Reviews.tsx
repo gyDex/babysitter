@@ -9,7 +9,6 @@ import 'swiper/css';
 import 'swiper/css/grid';
 import 'swiper/css/pagination';
 import Image from 'next/image';
-import Link from 'next/link';
 
 const Reviews = () => {
   const swiperRef = useRef<SwiperType | null>(null);
@@ -131,9 +130,13 @@ const Reviews = () => {
                   Спасибо за отличный сервис! Нашли няню быстро, дочка сразу пошла на контакт. Было спокойно оставить ребёнка, всё прошло замечательно!
                 </p>
               </div>
-              <div className={styles['reviews__item-bottom']}>
-                <Link href='/' className={styles['reviews__item-link']}>Читать полностью</Link>
-                <span className={styles['reviews__item-date']}>25.10.2025</span>
+            </SwiperSlide>
+            <SwiperSlide  className={styles['reviews__item']}>
+              <div className={styles['reviews__item-top']}>
+                <h2 className={styles['reviews__item-title']}>Ольга С.</h2>
+                <p className={styles['reviews__item-description']}>
+                  Спасибо за отличный сервис! Нашли няню быстро, дочка сразу пошла на контакт. Было спокойно оставить ребёнка, всё прошло замечательно!
+                </p>
               </div>
             </SwiperSlide>
             <SwiperSlide  className={styles['reviews__item']}>
@@ -143,9 +146,13 @@ const Reviews = () => {
                   Спасибо за отличный сервис! Нашли няню быстро, дочка сразу пошла на контакт. Было спокойно оставить ребёнка, всё прошло замечательно!
                 </p>
               </div>
-              <div className={styles['reviews__item-bottom']}>
-                <Link href='/' className={styles['reviews__item-link']}>Читать полностью</Link>
-                <span className={styles['reviews__item-date']}>25.10.2025</span>
+            </SwiperSlide>
+            <SwiperSlide  className={styles['reviews__item']}>
+              <div className={styles['reviews__item-top']}>
+                <h2 className={styles['reviews__item-title']}>Ольга С.</h2>
+                <p className={styles['reviews__item-description']}>
+                  Спасибо за отличный сервис! Нашли няню быстро, дочка сразу пошла на контакт. Было спокойно оставить ребёнка, всё прошло замечательно!
+                </p>
               </div>
             </SwiperSlide>
             <SwiperSlide  className={styles['reviews__item']}>
@@ -155,10 +162,6 @@ const Reviews = () => {
                   Спасибо за отличный сервис! Нашли няню быстро, дочка сразу пошла на контакт. Было спокойно оставить ребёнка, всё прошло замечательно!
                 </p>
               </div>
-              <div className={styles['reviews__item-bottom']}>
-                <Link href='/' className={styles['reviews__item-link']}>Читать полностью</Link>
-                <span className={styles['reviews__item-date']}>25.10.2025</span>
-              </div>
             </SwiperSlide>
             <SwiperSlide  className={styles['reviews__item']}>
               <div className={styles['reviews__item-top']}>
@@ -166,34 +169,6 @@ const Reviews = () => {
                 <p className={styles['reviews__item-description']}>
                   Спасибо за отличный сервис! Нашли няню быстро, дочка сразу пошла на контакт. Было спокойно оставить ребёнка, всё прошло замечательно!
                 </p>
-              </div>
-              <div className={styles['reviews__item-bottom']}>
-                <Link href='/' className={styles['reviews__item-link']}>Читать полностью</Link>
-                <span className={styles['reviews__item-date']}>25.10.2025</span>
-              </div>
-            </SwiperSlide>
-            <SwiperSlide  className={styles['reviews__item']}>
-              <div className={styles['reviews__item-top']}>
-                <h2 className={styles['reviews__item-title']}>Ольга С.</h2>
-                <p className={styles['reviews__item-description']}>
-                  Спасибо за отличный сервис! Нашли няню быстро, дочка сразу пошла на контакт. Было спокойно оставить ребёнка, всё прошло замечательно!
-                </p>
-              </div>
-              <div className={styles['reviews__item-bottom']}>
-                <Link href='/' className={styles['reviews__item-link']}>Читать полностью</Link>
-                <span className={styles['reviews__item-date']}>25.10.2025</span>
-              </div>
-            </SwiperSlide>
-            <SwiperSlide  className={styles['reviews__item']}>
-              <div className={styles['reviews__item-top']}>
-                <h2 className={styles['reviews__item-title']}>Ольга С.</h2>
-                <p className={styles['reviews__item-description']}>
-                  Спасибо за отличный сервис! Нашли няню быстро, дочка сразу пошла на контакт. Было спокойно оставить ребёнка, всё прошло замечательно!
-                </p>
-              </div>
-              <div className={styles['reviews__item-bottom']}>
-                <Link href='/' className={styles['reviews__item-link']}>Читать полностью</Link>
-                <span className={styles['reviews__item-date']}>25.10.2025</span>
               </div>
             </SwiperSlide>
         </Swiper>

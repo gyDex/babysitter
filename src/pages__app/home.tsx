@@ -25,26 +25,29 @@ export const HomePage = () => {
         <>
             <HeaderMenu />
 
-            <MobileModal title={'Выбор роли'} isOpen={mobileState.isOpen && mobileState.type === ''} next={() => mobileState.setOpen(true, 'city')} setOpen={mobileState.setOpen}>
-                <RadioGroup className="mt-[16px] flex gap-[12px] flex-col">
-                    <RadioItem name="Я няня, ищу работу" id="babysitter "value='babysitter' />
-                    <RadioItem name="Я родитель, ищу няню" id="parent "value='parent' />
-                </RadioGroup>
-            </MobileModal>
+            <div className="min-[900px]:hidden">
+                <MobileModal title={'Выбор роли'} isOpen={mobileState.isOpen && mobileState.type === ''} next={() => mobileState.setOpen(true, 'city')} setOpen={mobileState.setOpen}>
+                    <RadioGroup className="mt-[16px] flex gap-[12px] flex-col">
+                        <RadioItem name="Я няня, ищу работу" id="babysitter "value='babysitter' />
+                        <RadioItem name="Я родитель, ищу няню" id="parent "value='parent' />
+                    </RadioGroup>
+                </MobileModal>
 
-            <MobileModal title={'Выбор роли'} isOpen={mobileState.isOpen && mobileState.type === 'city'} next={() => mobileState.setOpen(false, '')} setOpen={mobileState.setOpen}>
-                <SelectModal title='Москва и МО' items={[
-                  {
-                    name: 'Москва и МО',
-                    id: 'city1',
-                  },
-                  {
-                    name: 'Москва и МО',
-                    id: 'city2',
-                  }
-                ]}          
-                />
-            </MobileModal>
+                <MobileModal title={'Выбор роли'} isOpen={mobileState.isOpen && mobileState.type === 'city'} next={() => mobileState.setOpen(false, '')} setOpen={mobileState.setOpen}>
+                    <SelectModal title='Москва и МО' items={[
+                    {
+                        name: 'Москва и МО',
+                        id: 'city1',
+                    },
+                    {
+                        name: 'Москва и МО',
+                        id: 'city2',
+                    }
+                    ]}          
+                    />
+                </MobileModal>
+            </div>
+
 
             <Main__Hero />
             <Guarantees />

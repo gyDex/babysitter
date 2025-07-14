@@ -17,9 +17,12 @@ const VideoPlayer:React.FC<Props> = ({videoUrl, height}) => {
         if (refVideo.current !== null) {
             if (!isPlay) {
                 refVideo?.current?.play();
+                refVideo.current.volume = 1;
             }
             else {
                 refVideo?.current?.pause();
+                refVideo.current.volume = 1;
+
             }
     
             setPlay((prev: boolean) => !prev)
@@ -33,9 +36,7 @@ const VideoPlayer:React.FC<Props> = ({videoUrl, height}) => {
             <video
                 src={videoUrl}
                 loop
-                muted
-                playsInline
-
+                playsInline                 
                 ref={refVideo}
             >
             Ваш браузер не поддерживает видео.
