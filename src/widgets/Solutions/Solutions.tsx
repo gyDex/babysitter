@@ -64,22 +64,33 @@ const Solutions = () => {
 
   const listHeight = useTransform(scrollYProgress, [0, 1], [items.length * itemHeight, itemHeight]);
 
-const overlapOffset = 180;  // начальный большой отступ
-const tailOffset = 10;      // отступ при сложении (выпирание)
-const progress = useTransform(scrollYProgress, [0, 1], [0, 1]);
+const maxY = 0; // верхняя граница для первого элемента
 
-const yTransforms = items.map((_, i) =>
-  useTransform(progress, (p) => {
-    const delay = i * 0.1;
-    // локальный прогресс для блока, с задержкой и ограничением от 0 до 1
-    const localP = Math.min(Math.max((p - delay) / 0.3, 0), 1);
+const rawY = items.map((_, i) => {
+  const startY = i * itemHeight;
+  const endY = startY - (itemHeight * (items.length - 1));
+  return useTransform(scrollYProgress, (progress) => startY + (endY - startY) * progress);
+});
 
-    // вычисляем итоговое смещение:
-    // плавно идём от overlapOffset к tailOffset
-    return (1 - localP) * i * overlapOffset + localP * i * tailOffset;
-  })
-);
+// Теперь применим ограничение для "прилипание" к предыдущему элементу
+const yTransforms = [] as any;
 
+for (let i = 0; i < items.length; i++) {
+  if (i === 0) {
+    // Первый элемент ограничен сверху maxY
+    yTransforms.push(
+      useTransform(rawY[i], (value) => Math.max(value, maxY))
+    );
+  } else {
+    // Последующие ограничены позицией предыдущего - itemHeight
+    yTransforms.push(
+      useTransform(
+        [rawY[i], yTransforms[i - 1]],
+        ([currentY, prevY]) => Math.max(currentY as any, prevY as any + 5)
+      )
+    );
+  }
+}
   const [isDesktop, setIsDesktop] = useState(false);
 
   useEffect(() => {
@@ -97,7 +108,7 @@ const yTransforms = items.map((_, i) =>
     <section
       ref={sectionRef}
       className={styles['solutions']}
-      style={{ height: isDesktop ? `${items.length * 60 + 100}vh` : 'fit-content' }}
+      style={{ height: isDesktop ? `${items.length * 100 + 1000}vh` : 'fit-content' }}
     >
       <div
         className={styles['solutions__inner']}
@@ -122,7 +133,7 @@ const yTransforms = items.map((_, i) =>
             width: '100%',
             top: isDesktop ?  40 : 0,
             maxWidth: 792,
-            height: isDesktop ? listHeight : `${items.length * 20 + 100}vh`,
+            height: isDesktop ? listHeight : `fit-content`,
             marginTop: 40,
           }}
         >

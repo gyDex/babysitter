@@ -16,8 +16,20 @@ const CardBabysitterList = () => {
                     id: 'city1',
                   },
                   {
-                    name: 'Екатеринбург',
+                    name: 'Москва',
                     id: 'city2',
+                  },
+                  {
+                    name: 'Санкт-Петербург',
+                    id: 'city3',
+                  },
+                  {
+                    name: 'Казань',
+                    id: 'city4',
+                  },
+                  {
+                    name: 'Самара',
+                    id: 'city5',
                   }
                 ]} />
             </div>

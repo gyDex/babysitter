@@ -51,18 +51,26 @@ export const HomePage = () => {
 
                 <MobileModal title={'Ваш город'} isOpen={mobileState.isOpen && mobileState.type === 'city'} next={() => mobileState.setOpen(false, '')} setOpen={mobileState.setOpen}>
                     <SelectModal title='Москва и МО' items={[
-                        {
-                            name: 'Москва и МО',
-                            id: 'city1',
-                        },
-                        {
-                            name: 'Санкт-Петербург',
-                            id: 'city2',
-                        },
-                        {
-                            name: 'Екатеринбург',
-                            id: 'city3',
-                        }
+                  {
+                    name: 'Екатеринбург',
+                    id: 'city1',
+                  },
+                  {
+                    name: 'Москва',
+                    id: 'city2',
+                  },
+                  {
+                    name: 'Санкт-Петербург',
+                    id: 'city3',
+                  },
+                  {
+                    name: 'Казань',
+                    id: 'city4',
+                  },
+                  {
+                    name: 'Самара',
+                    id: 'city5',
+                  }
                     ]}          
                     />
                 </MobileModal>
@@ -70,18 +78,26 @@ export const HomePage = () => {
 
             <Popup isOpen={mobileState.isOpen && mobileState.type === ''} next={() => mobileState.setOpen(true, 'role')} setOpen={mobileState.setOpen}  title="Ваш город">
                 <SelectModal className="!mt-[0px]" title='Москва и МО' items={[
-                    {
-                        name: 'Москва и МО',
-                        id: 'city1',
-                    },
-                    {
-                        name: 'Санкт-Петербург',
-                        id: 'city2',
-                    },
-                    {
-                        name: 'Екатеринбург',
-                        id: 'city3',
-                    }
+                  {
+                    name: 'Екатеринбург',
+                    id: 'city1',
+                  },
+                  {
+                    name: 'Москва',
+                    id: 'city2',
+                  },
+                  {
+                    name: 'Санкт-Петербург',
+                    id: 'city3',
+                  },
+                  {
+                    name: 'Казань',
+                    id: 'city4',
+                  },
+                  {
+                    name: 'Самара',
+                    id: 'city5',
+                  }
                 ]}          
                 />
             </Popup>
