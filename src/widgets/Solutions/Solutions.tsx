@@ -38,7 +38,11 @@ const items = [
   },
 ];
 
-const Solutions = () => {
+type Props = {
+  title: string,
+}
+
+const Solutions: React.FC<Props> = ({title}) => {
   const sectionRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -64,7 +68,7 @@ const Solutions = () => {
 
   const listHeight = useTransform(scrollYProgress, [0, 1], [items.length * itemHeight, itemHeight]);
 
-const maxY = 0; // верхняя граница для первого элемента
+const maxY = 0;
 
 const rawY = items.map((_, i) => {
   const startY = i * itemHeight;
@@ -72,17 +76,14 @@ const rawY = items.map((_, i) => {
   return useTransform(scrollYProgress, (progress) => startY + (endY - startY) * progress);
 });
 
-// Теперь применим ограничение для "прилипание" к предыдущему элементу
 const yTransforms = [] as any;
 
 for (let i = 0; i < items.length; i++) {
   if (i === 0) {
-    // Первый элемент ограничен сверху maxY
     yTransforms.push(
       useTransform(rawY[i], (value) => Math.max(value, maxY))
     );
   } else {
-    // Последующие ограничены позицией предыдущего - itemHeight
     yTransforms.push(
       useTransform(
         [rawY[i], yTransforms[i - 1]],
@@ -123,7 +124,7 @@ for (let i = 0; i < items.length; i++) {
         }}
       >
         <h2 style={{ paddingTop:  '40px' }} className={styles['solutions__title']}>
-          Не просто освобождаем вам время, а строим успешное будущее вашего ребёнка
+          {title}
         </h2>
 
         <motion.ul

@@ -10,7 +10,11 @@ import 'swiper/css/grid';
 import 'swiper/css/pagination';
 import Image from 'next/image';
 
-const Reviews = () => {
+type Props = {
+  title: React.ReactNode,
+}
+
+const Reviews:React.FC<Props> = ({}) => {
   const swiperRef = useRef<SwiperType | null>(null);
 
   return (

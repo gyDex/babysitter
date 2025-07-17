@@ -13,7 +13,7 @@ import { useState } from "react";
 
 type Props = {
   items: Item[],
-  title: string,
+  title: string | undefined,
 }
 
 type Item = {

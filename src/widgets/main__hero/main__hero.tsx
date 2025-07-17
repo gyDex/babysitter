@@ -4,7 +4,7 @@ import Image from 'next/image'
 import styles from './main__hero.module.scss'
 import Button from '@/shared/compontents/Button'
 import { motion, useInView } from 'framer-motion';
-import { useHeader } from '@/entities/FAQ/stores/useHeader';
+import { useHeader } from '@/entities/stores/useHeader';
 import { useEffect, useRef } from 'react';
 
 const Main__Hero = () => {

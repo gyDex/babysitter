@@ -12,22 +12,39 @@
 }
 
 .popup {
-    &__inner {
+    &__inner, &__inner-cross {
         background-color: #FFFFFF;
         min-width: 407px;
         min-height: 262px;
         border-radius: 16px;
         padding: 32px;
+        position: relative;
+    }
 
+    &__inner-cross {
+        padding-top: 16px;
+        min-height: initial;
     }
 
     &__top-content {
         flex-grow: 1;
     }
 
+    &__cross {
+        background-color: #EFF0F5;
+        border-radius: 8px;
+        padding: 8px;
+        right: 16px;
+        top: 16px;
+        position: absolute;
+        cursor: pointer;
+    }
+
     &__bottom {
         flex-shrink: 0;
         margin-top: auto;
+        display: flex;
+        justify-content: center;
     }
 
     &__content {

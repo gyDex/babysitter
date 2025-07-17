@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import styles from './Header.module.scss'
 import Link from 'next/link';
-import { useHeader } from '@/entities/FAQ/stores/useHeader';
+import { useHeader } from '@/entities/stores/useHeader';
 
 const Header = () => {
     const headerState = useHeader();

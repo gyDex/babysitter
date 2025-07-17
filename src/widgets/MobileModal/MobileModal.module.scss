@@ -40,13 +40,14 @@
     &__content-top {
         display: flex;
         justify-content: space-between;
-        align-items: center;
+        align-items: flex-start;
+        margin-bottom: 16px;
     }
 
     &__title {
         font-family: Onest;
         font-weight: 600;
-        font-size: 24px;
+        font-size: 22px;
         line-height: 28px;
         letter-spacing: 0%;
         color: #191816;

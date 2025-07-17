@@ -20,6 +20,15 @@
     }
 }
 
+.not-register-modal button  {
+  max-width: 316px;
+  font-family: Onest;
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 100%;
+  letter-spacing: -5%;
+}
+
 [id] {
   scroll-margin-top: 110px;
 }

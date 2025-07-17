@@ -1,6 +1,6 @@
 'use client'
 
-import { useHeader } from '@/entities/FAQ/stores/useHeader'
+import { useHeader } from '@/entities/stores/useHeader'
 import styles from './HeaderMenu.module.scss'
 import { motion, useMotionValue, useTransform, animate } from 'framer-motion'
 import { useEffect } from 'react'
@@ -48,11 +48,8 @@ const HeaderMenu = () => {
         </ul>
 
         <div className={styles['header-menu__bottom']}>
-          <a className={styles['header-menu__bottom-link']} href="mailto:babystorykazan@icloud.com">
-            babystorykazan@icloud.com
-          </a>
-          <a className={styles['header-menu__bottom-link']} href="mailto:murtazina1997@icloud.com">
-            murtazina1997@icloud.com
+          <a className={styles['header-menu__bottom-link']} href="mailto:servicenanny@yandex.ru">
+            servicenanny@yandex.ru
           </a>
 
           <div className={styles['header-menu__socials']}>

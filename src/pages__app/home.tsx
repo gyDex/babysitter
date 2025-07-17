@@ -1,8 +1,8 @@
 'use client'
 
 import { RadioGroup } from "@/components/ui/radio-group"
-import { useMobileState } from "@/entities/FAQ/stores/useMobileModal"
-import BeforePay from "@/widgets/BeforePay/BeforePay"
+import { useMobileState } from "@/entities/stores/useMobileModal"
+import { setRoleCookies } from "@/features/setRoleCookie"
 import CardBabysitterList from "@/widgets/CardBabysitterList/CardBabysitterList"
 import Changes from "@/widgets/Changes/Changes"
 import FAQ from "@/widgets/Faq/Faq"
@@ -15,114 +15,144 @@ import MobileModal from "@/widgets/MobileModal/MobileModal"
 import Popup from "@/widgets/Popup/Popup"
 import RadioItem from "@/widgets/RadioItem/RadioItem"
 import Reviews from "@/widgets/Reviews/Reviews"
-import SelectModal from "@/widgets/SelectModal/SelectModal"
+import {SelectModal} from "@/widgets/SelectModal/SelectModal"
 import Solutions from "@/widgets/Solutions/Solutions"
 import VideoBlock from "@/widgets/VideoBlock/VideoBlock"
-import { useState } from "react"
+import { useEffect, useState } from "react";
+
+import { useRouter } from "next/navigation"
+import { cities } from "@/entities/cities"
+import { setCityCookies } from "@/features/setCityCookies"
+import Cookies from 'js-cookie'
 
 export const HomePage = () => {
     const mobileState = useMobileState();
-  const [selectedValue, setSelectedValue] = useState<string>('');
+    const [selectedValue, setSelectedValue] = useState<string>('');
+    const [selectCity, setSelectCity] = useState<string>('');
+
+    const [role, setRole] = useState<string | undefined>()
+    const [city, setCity] = useState<string | undefined>()
+    const [loaded, setLoaded] = useState(false)
+
+  useEffect(() => {
+    const roleCookie = Cookies.get('role')
+    const cityCookie = Cookies.get('city')
+
+    setRole(roleCookie)
+    setCity(cityCookie)
+    setLoaded(true)
+
+    console.log('Role:', roleCookie)
+    console.log('City:', cityCookie)
+  }, [])
+    const router = useRouter();
+
+    if (!loaded) return null  
+
     return (
         <>
             <HeaderMenu />
 
             <div className="min-[1200px]:hidden">
-                <MobileModal title={'Выбор роли'} isOpen={mobileState.isOpen && mobileState.type === ''} next={() => mobileState.setOpen(true, 'city')} setOpen={mobileState.setOpen}>
+                <MobileModal title={'Выбор роли'} isOpen={
+                  (role === undefined && mobileState.isOpen && mobileState.type === 'role') || 
+                  (role === undefined && city !== undefined && mobileState.isOpen)
+                } next={() => 
+                {
+                  if(selectCity !== '') {
+                    mobileState.setOpen(true, 'role')
+                    setCityCookies('city', selectCity)
+                  }
+                }} setOpen={mobileState.setOpen}>
                     <RadioGroup>
                         <div className="mt-[16px] flex gap-[12px] flex-col" role="radiogroup" aria-label="Example radio group">
                             <RadioItem
                                 id="baby"
                                 name="Я няня, ищу работу"
                                 value="Я няня, ищу работу"
-                                checked={selectedValue === '1'}
-                                onChange={() => setSelectedValue('1')}
+                                checked={selectedValue === 'baby'}
+                                onChange={() => setSelectedValue('baby')}
                             />
                             <RadioItem
                                 id="parent"
                                 name="Я родитель, ищу няню"
                                 value="Я родитель, ищу няню"
-                                checked={selectedValue === '2'}
-                                onChange={() => setSelectedValue('2')}
+                                checked={selectedValue === 'parent'}
+                                onChange={() => setSelectedValue('parent')}
                             />
                             </div>
                     </RadioGroup>
                 </MobileModal>
 
-                <MobileModal title={'Ваш город'} isOpen={mobileState.isOpen && mobileState.type === 'city'} next={() => mobileState.setOpen(false, '')} setOpen={mobileState.setOpen}>
-                    <SelectModal title='Москва и МО' items={[
-                  {
-                    name: 'Екатеринбург',
-                    id: 'city1',
-                  },
-                  {
-                    name: 'Москва',
-                    id: 'city2',
-                  },
-                  {
-                    name: 'Санкт-Петербург',
-                    id: 'city3',
-                  },
-                  {
-                    name: 'Казань',
-                    id: 'city4',
-                  },
-                  {
-                    name: 'Самара',
-                    id: 'city5',
+                <MobileModal title={'Ваш город'} isOpen={
+                  (city === undefined && mobileState.isOpen && mobileState.type === '') ||
+                  (city === undefined && role !== undefined && mobileState.isOpen)
+                } next={() => 
+                {
+                  if (selectedValue !== '') {
+                    mobileState.setOpen(false, '')
+                    setRoleCookies('role', selectedValue)
+                    if (selectedValue === 'baby') {
+                      router.push('babysitter')
+                    }
+                    else {
+                      router.push('/')
+                    }
                   }
-                    ]}          
+                }} setOpen={mobileState.setOpen}>
+                  <SelectModal callbackChange={setSelectCity} title='Москва и МО' items={cities}    
                     />
                 </MobileModal>
             </div>
 
-            <Popup isOpen={mobileState.isOpen && mobileState.type === ''} next={() => mobileState.setOpen(true, 'role')} setOpen={mobileState.setOpen}  title="Ваш город">
-                <SelectModal className="!mt-[0px]" title='Москва и МО' items={[
-                  {
-                    name: 'Екатеринбург',
-                    id: 'city1',
-                  },
-                  {
-                    name: 'Москва',
-                    id: 'city2',
-                  },
-                  {
-                    name: 'Санкт-Петербург',
-                    id: 'city3',
-                  },
-                  {
-                    name: 'Казань',
-                    id: 'city4',
-                  },
-                  {
-                    name: 'Самара',
-                    id: 'city5',
+            <Popup isOpen={
+                  (city === undefined && mobileState.isOpen && mobileState.type === '') ||
+                  (city === undefined && role !== undefined && mobileState.isOpen)
+                }next={() => 
+                {
+                  if(selectCity !== '') {
+                    mobileState.setOpen(true, 'role')
+                    setCityCookies('city', selectCity)
                   }
-                ]}          
+                }} setOpen={mobileState.setOpen}  title="Ваш город">
+                <SelectModal callbackChange={setSelectCity} className="!mt-[0px] !max-h-[50px]" title='Москва и МО' items={cities}          
                 />
             </Popup>
 
-            <Popup isOpen={mobileState.isOpen && mobileState.type === 'role'} next={() => mobileState.setOpen(false, '')} setOpen={mobileState.setOpen}  title="Ваша роль">
+            <Popup isOpen={
+                  (role === undefined && mobileState.isOpen && mobileState.type === 'role') || 
+                  (role === undefined && city !== undefined && mobileState.isOpen)
+                }  next={() => {
+                  if (selectedValue !== '') {
+                    mobileState.setOpen(false, '')
+                    setRoleCookies('role', selectedValue)
+                    if (selectedValue === 'baby') {
+                      router.push('babysitter')
+                    }
+                    else {
+                      router.push('/')
+                    }
+                  }
+                }} setOpen={mobileState.setOpen}  title="Ваша роль">
                 <RadioGroup>
                     <div className="flex gap-[12px] flex-col" role="radiogroup" aria-label="Example radio group">
                         <RadioItem
                             id="baby"
                             name="Я няня, ищу работу"
                             value="Я няня, ищу работу"
-                            checked={selectedValue === '1'}
-                            onChange={() => setSelectedValue('1')}
+                            checked={selectedValue === 'baby'}
+                            onChange={() => setSelectedValue('baby')}
                         />
                         <RadioItem
                             id="parent"
                             name="Я родитель, ищу няню"
                             value="Я родитель, ищу няню"
-                            checked={selectedValue === '2'}
-                            onChange={() => setSelectedValue('2')}
+                            checked={selectedValue === 'parent'}
+                            onChange={() => setSelectedValue('parent')}
                         />
                         </div>
                 </RadioGroup>
             </Popup>
-
 
             <Main__Hero />
             <Guarantees />
@@ -130,10 +160,15 @@ export const HomePage = () => {
             <Changes />
 
             <div className="block_beige">
-                <Solutions />   
-                <BeforePay />
+                <Solutions title="Не просто освобождаем вам время, а строим успешное будущее вашего ребенка" />   
+                {/* <BeforePay items={[
+                  title: 'Зарегистрируйтесь, заполнить информацию о себе',
+                  icon: 
+                ]} title="Что вас ждет после оплаты"/> */}
                 <VideoBlock />
-                <Reviews />
+                <Reviews title={<>
+                    Никто <br /> не расскажет  <br /> о нас лучше наших клиентов
+                </>} />
                 <Form_Home />
                 <FAQ />
             </div>

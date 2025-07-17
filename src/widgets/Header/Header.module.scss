@@ -34,6 +34,10 @@
         padding-right: 4px;
     }
 
+    &__inner_transparent {
+        box-shadow: none;
+    }
+
     &__inner a img, &__inner_transparent a img {
         height: 30px;
         width: 164px;
