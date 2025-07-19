@@ -32,7 +32,7 @@ const Header = () => {
                      <Image src={'/images/header/logo.svg'} alt="Logo" width={186} height={37} />
                 </Link>
 
-                {
+                {/* {
                     city !== undefined && pathName === '/auth' && <div className={styles['header__city']}>
                         <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <g clip-path="url(#clip0_591_10549)">
@@ -50,7 +50,7 @@ const Header = () => {
                             city
                         }
                     </div>
-                }
+                } */}
 
                 {
                     <div className={clsx({
@@ -59,7 +59,7 @@ const Header = () => {
                         <nav className={styles.header__nav}>
                             <ul className={styles['header__nav-list']}>
                                 {
-                                    pathName === '/babysitter' && <>
+                                    pathName === '/babysitter' ? <>
                                         <li onClick={() => headerState.setOpenMenu(false)} className={styles['header__nav-item']}>
                                         <a href="#about">О нас</a>
                                         </li>
@@ -73,10 +73,8 @@ const Header = () => {
                                         <li onClick={() => headerState.setOpenMenu(false)} className={styles['header__nav-item']}><a href="#reviews">Вакансии мам</a></li>
                                         <li onClick={() => headerState.setOpenMenu(false)} className={styles['header__nav-item']}><a href="#solution">Чем предстоит заниматься</a></li> 
                                     </>
-                                }
-
-                                {
-                                    pathName === 'parent' && <>
+                                    :
+                                    <>
                                         <li className={styles['header__nav-item']}>
                                             <Link href={'#about'}>
                                                 О нас
