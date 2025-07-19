@@ -15,7 +15,7 @@ const CodeStage = () => {
                 </span>
             </h1>
             
-            <button className={styles['code-stage__prev']}>
+            <button onClick={() => registerStage.setStage('phone')} className={styles['code-stage__prev']}>
                 Изменить номер
             </button>
 
