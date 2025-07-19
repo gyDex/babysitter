@@ -4,9 +4,6 @@ import { useHeader } from "@/entities/stores/useHeader"
 import React, { useEffect } from "react";
 
 import styles from './auth-page.module.scss'
-import PhoneStage from "@/widgets/AuthStages/PhoneStage/PhoneStage";
-import CodeStage from "@/widgets/AuthStages/CodeStage/CodeStage";
-import { useRegisterStage } from "@/entities/stores/useRegisterStage";
 import PaymentStage from "@/widgets/AuthStages/PaymentStage/PaymentStage";
 import HeaderMenu from "@/widgets/HeaderMenu/HeaderMenu";
 
@@ -15,10 +12,8 @@ type Props = {
 }
 
 
-const AuthPage:React.FC<Props> = ({without_sub = false}) => {
+const AuthWithoutSubPage:React.FC<Props> = ({without_sub = false}) => {
     const headerState = useHeader();
-
-    const registerStage = useRegisterStage();
     
     useEffect(() => {
         headerState.setTransparent(true);
@@ -43,19 +38,12 @@ const AuthPage:React.FC<Props> = ({without_sub = false}) => {
                     </video>
 
                 </div>
-
-                {
-                    registerStage.stage === 'phone' && <PhoneStage />
-                }
-                {
-                    registerStage.stage === 'code' && <CodeStage />
-                }
-                {
-                    registerStage.stage === 'payment' && <PaymentStage without_sub={without_sub} />
-                }
-            </div>  
+                
+                <PaymentStage without_sub={without_sub} />
+                
+            </div> 
         </>
     )
 }
 
-export default AuthPage
+export default AuthWithoutSubPage

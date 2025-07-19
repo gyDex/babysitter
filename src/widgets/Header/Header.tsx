@@ -19,7 +19,7 @@ const Header = () => {
 
     const pathName = usePathname();
 
-    const [city, setCity] = useState<string | undefined>()
+    const [, setCity] = useState<string | undefined>()
 
     useEffect(() => {
         setCity(Cookies.get('city'))

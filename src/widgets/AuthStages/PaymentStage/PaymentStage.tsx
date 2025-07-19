@@ -4,17 +4,26 @@ import { useAuth } from '@/entities/stores/useAuth';
 import styles from './PaymentStage.module.scss'
 import Button from '@/shared/compontents/Button';
 import { useRouter } from 'next/navigation';
+import React from 'react';
 
-const PaymentStage = () => {
+type Props = {
+  without_sub: boolean,
+}
+
+
+const PaymentStage:React.FC<Props> = ({without_sub}) => {
     const authState = useAuth();
 
     const route = useRouter();
 
     return (
         <section className={styles['code-stage']}>
-            <div className={styles['code-stage__label-wrap']}>
-                <span className={styles['code-stage__label']}>Похоже, ваша подписка истекла 10.10.2010</span>
-            </div>
+            {
+                without_sub &&
+                <div className={styles['code-stage__label-wrap']}>
+                    <span className={styles['code-stage__label']}>Похоже, ваша подписка истекла 10.10.2010</span>
+                </div>
+            }
 
             <h1 className={styles['code-stage__title']}>Месяц оплаты платформы стоит <span className={styles['code-stage__price']}>1990₽</span></h1>
 
