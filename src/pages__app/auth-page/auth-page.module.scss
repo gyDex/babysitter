@@ -70,7 +70,9 @@
     margin-top: 24px;
   }
 
-    @media screen and (max-width: $tablets-max) {
+    @media screen and (max-width: $tablets) {
+        padding-top: 95px;
+        padding-bottom: 32px;
         padding-inline: 16px;
     }
 

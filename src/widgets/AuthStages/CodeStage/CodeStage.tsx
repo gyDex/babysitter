@@ -1,37 +1,29 @@
 'use client';
 
-import { useState } from 'react'
+import { useRegisterStage } from '@/entities/stores/useRegisterStage';
 import styles from './CodeStage.module.scss'
-import clsx from 'clsx';
 import Button from '@/shared/compontents/Button';
 
 const CodeStage = () => {
-    const [role, setRole] = useState<'babysitter' | 'parent'>('babysitter');
+    const registerStage = useRegisterStage();
 
     return (
         <section className={styles['code-stage']}>
-            <h1 className={styles['code-stage__title']}>Вход и регистрация</h1>
+            <h1 className={styles['code-stage__title']}>Код отправили на номер 
+                <span className={styles['code-stage__phone']}>
+                    +7 903 000 00 00
+                </span>
+            </h1>
+            
+            <button className={styles['code-stage__prev']}>
+                Изменить номер
+            </button>
 
-            <div className={styles['code-stage__roles']}>
-                <button onClick={() => setRole('parent')} className={clsx('', {
-                    [styles['code-stage__role']]: role === 'babysitter',
-                    [styles['code-stage__role_active']]: role === 'parent',
-                })}>
-                    Я мама
-                </button>
-
-                <button onClick={() => setRole('babysitter')} className={clsx('', {
-                    [styles['code-stage__role']]: role === 'parent',
-                    [styles['code-stage__role_active']]: role === 'babysitter',
-                })}>
-                    Я няня
-                </button>
-            </div>
 
             <div className={styles['code-stage__bottom']}>
-                <input type="text" placeholder='Номер телефона' className={styles['code-stage__input']} />
+                <input type="text" placeholder='Введите код' className={styles['code-stage__input']} />
 
-                <Button style={{
+                <Button onClick={() => registerStage.setStage('payment')} style={{
                     marginTop: '0px',
                 }} text='Продолжить' variation='second' type='button' />
             </div>

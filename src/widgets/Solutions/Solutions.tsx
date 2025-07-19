@@ -46,7 +46,7 @@ const Solutions: React.FC<Props> = ({title}) => {
   const sectionRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: sectionRef,
-    offset: ['start start', 'end start'],
+    offset: ['start start', 'end end'],
   });
 
     const [itemHeight, setItemHeight] = useState(180);
@@ -78,6 +78,7 @@ const rawY = items.map((_, i) => {
 
 const yTransforms = [] as any;
 
+
 for (let i = 0; i < items.length; i++) {
   if (i === 0) {
     yTransforms.push(
@@ -107,9 +108,10 @@ for (let i = 0; i < items.length; i++) {
 
   return (
     <section
+      id='solution'
       ref={sectionRef}
       className={styles['solutions']}
-      style={{ height: isDesktop ? `${items.length * 100 + 1000}vh` : 'fit-content' }}
+style={{ height: isDesktop ? `${(items.length) * 60 + 100}vh` : 'fit-content' }}
     >
       <div
         className={styles['solutions__inner']}

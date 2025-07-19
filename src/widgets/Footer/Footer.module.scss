@@ -12,6 +12,19 @@
     margin-top: 32px;
             color: white;
 
+    &__data {
+        display: flex;
+        gap: 12px;
+        flex-direction: column;
+        margin-top: 40px;
+
+        font-family: Onest;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 22px;
+        letter-spacing: 0px;
+        color: #FFFFFF;
+    }
 
     &__module {
         background-color: white;
@@ -132,6 +145,7 @@
         &__container {
             padding-inline: 16px;
         }
+        
     }
 
     @media screen and (min-width: $desktops-md) {
@@ -142,6 +156,10 @@
 
     @media screen and (min-width: $desktops-sm) {
         margin-top: 64px;
+
+        &__data {
+            gap: 16px;
+        }
 
         &__container {
             padding: 64px;

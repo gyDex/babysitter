@@ -5,11 +5,11 @@ import { useMobileState } from '@/entities/stores/useMobileModal'
 type Props = {
     name: string,
     person: string,
-    quote: string,
-    tasks: string,
+    quote: any,
+    tasks?: any,
 }
 
-const ResponseFeedback:React.FC<Props> = ({person, quote, tasks}) => {
+const ResponseFeedback:React.FC<Props> = ({person, quote, tasks, name}) => {
     const modalState = useMobileState();
 
   return (
@@ -44,7 +44,7 @@ const ResponseFeedback:React.FC<Props> = ({person, quote, tasks}) => {
             <div className={styles['response-feedback__top-bottom']}>
                 <div className={styles['response-feedback__top-info']}>
                     <div className={styles['response-feedback__top-info-left']}>
-                        <h2 className={styles['response-feedback__name']}>Алиса К.</h2>
+                        <h2 className={styles['response-feedback__name']}>{name}</h2>
 
                         <address className={styles['response-feedback__address']}>
                             {person}

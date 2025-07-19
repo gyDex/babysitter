@@ -6,6 +6,6 @@ interface RegisterStage {
 }
 
 export const useRegisterStage = create<RegisterStage>()((set) => ({
-    stage: 'code',
+    stage: 'phone',
     setStage: (stage) => set(() => ({ stage: stage })),
 }))

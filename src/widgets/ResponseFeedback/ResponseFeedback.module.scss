@@ -149,6 +149,7 @@
         color: #191816;
         display: block;
         margin-top: 8px;
+        max-width: 895px;
     }
 
     &__top-label {
@@ -250,6 +251,8 @@
         border-radius: 16px;
         margin-top: 24px;
         width: 100%;
+
+        cursor: pointer;
     }
 
     &__word {

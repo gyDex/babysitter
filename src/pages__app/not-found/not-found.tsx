@@ -38,7 +38,7 @@ const NotFoundPage = () => {
         <Button style={{
           width: '235px',
           marginTop: '32px'
-        }} onClick={() => router.push('/')} text='На главную' type='button' />
+        }} onClick={() => router.push('/parent')} text='На главную' type='button' />
       </div>
     </div>
   )

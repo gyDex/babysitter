@@ -3,7 +3,7 @@ import styles from './BabysittersBenefits.module.scss'
 
 const BabysittersBenefits = () => {
   return (
-    <section className={styles['babysit-benefits']}>
+    <section id='about' className={styles['babysit-benefits']}>
         <div className={styles['babysit-benefits__container']}>
             <h1 className={styles['babysit-benefits__title']}>
                 Станьте няней, которой доверяют с первого взгляда

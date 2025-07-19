@@ -1,16 +1,21 @@
-
+'use client'
 import Button from '@/shared/compontents/Button'
 import styles from './Footer.module.scss'
 import Link from 'next/link'
+import { useAuth } from '@/entities/stores/useAuth'
 
 const Footer = () => {
+    const authState = useAuth();
+
   return (
     <footer className={styles['footer']}>
         <div className={styles['footer__container']}>
             <div className={styles['footer__top']}>
                 <div className={styles['footer__module']}>
                     <h2 className={styles['footer__module-title']}>
-                        Остались вопросы?
+                        {
+                            authState.isAuth ? 'Остались вопросы?' : 'Нужна помощь?'   
+                        }
                     </h2>
 
                     
@@ -66,8 +71,17 @@ const Footer = () => {
                         </Link>
 
                     </ul>
+
+                    <div className={styles['footer__data']}>
+                        <span>ИП Муртазина Снежана Валерьевна</span>
+                        <span>ИНН: 210324399274</span>
+                        <span>ОГРНИП: 323169000065417</span>
+                    </div>
                 </div>
+
+
             </div>
+            
 
             <div className={styles['footer__bottom']}>
                 <span>

@@ -7,6 +7,8 @@ import styles from './auth-page.module.scss'
 import PhoneStage from "@/widgets/AuthStages/PhoneStage/PhoneStage";
 import CodeStage from "@/widgets/AuthStages/CodeStage/CodeStage";
 import { useRegisterStage } from "@/entities/stores/useRegisterStage";
+import PaymentStage from "@/widgets/AuthStages/PaymentStage/PaymentStage";
+import HeaderMenu from "@/widgets/HeaderMenu/HeaderMenu";
 
 const AuthPage = () => {
     const headerState = useHeader();
@@ -19,6 +21,8 @@ const AuthPage = () => {
 
     return (
         <>
+            <HeaderMenu />
+
             <div className={styles['auth-page']}>
                 <div className={styles['auth-page__bg']}>
                     <video
@@ -42,7 +46,7 @@ const AuthPage = () => {
                     registerStage.stage === 'code' && <CodeStage />
                 }
                 {
-                    registerStage.stage === 'payment' && <CodeStage />
+                    registerStage.stage === 'payment' && <PaymentStage />
                 }
             </div>  
         </>

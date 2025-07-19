@@ -20,7 +20,7 @@
         padding: 24px;
         background-color: #FFFFFF;
         display: flex;
-        min-height: 146;
+        min-height: 146px;
         border-radius: 16px;
         position: relative;
         overflow: hidden;
@@ -83,7 +83,6 @@
     @media screen and (max-width: $desktops-sm) {
         &__list {
             padding-inline: 16px;
-
         }
     }
 

@@ -131,45 +131,45 @@ const Reviews:React.FC<Props> = ({}) => {
               <div className={styles['reviews__item-top']}>
                 <h2 className={styles['reviews__item-title']}>Ольга С.</h2>
                 <p className={styles['reviews__item-description']}>
-                  Спасибо за отличный сервис! Нашли няню быстро, дочка сразу пошла на контакт. Было спокойно оставить ребёнка, всё прошло замечательно!
+                  Приятно работать с родителями, которые уважают труд няни. Чётко оговариваются условия, оплата всегда вовремя. Ребёнок чудесный — быстро нашли общий язык. Я чувствую себя частью семьи.
                 </p>
               </div>
             </SwiperSlide>
             <SwiperSlide  className={styles['reviews__item']}>
               <div className={styles['reviews__item-top']}>
-                <h2 className={styles['reviews__item-title']}>Ольга С.</h2>
+                <h2 className={styles['reviews__item-title']}>Ирина Р.</h2>
                 <p className={styles['reviews__item-description']}>
-                  Спасибо за отличный сервис! Нашли няню быстро, дочка сразу пошла на контакт. Было спокойно оставить ребёнка, всё прошло замечательно!
+                  Была удивлена, насколько бережно относятся к специалисту. Родители всегда на связи, прислушиваются к рекомендациям, создают атмосферу доверия. Очень комфортно!
                 </p>
               </div>
             </SwiperSlide>
             <SwiperSlide  className={styles['reviews__item']}>
               <div className={styles['reviews__item-top']}>
-                <h2 className={styles['reviews__item-title']}>Ольга С.</h2>
+                <h2 className={styles['reviews__item-title']}>Аннастасия Г.</h2>
                 <p className={styles['reviews__item-description']}>
-                  Спасибо за отличный сервис! Нашли няню быстро, дочка сразу пошла на контакт. Было спокойно оставить ребёнка, всё прошло замечательно!
+                  Работаю в семье уже месяц. Родители открытые, доброжелательные, ребёнок — чудо. Ожидала сложностей, но сервис помог подобрать идеально подходящую семью.
                 </p>
               </div>
             </SwiperSlide>
             <SwiperSlide  className={styles['reviews__item']}>
               <div className={styles['reviews__item-top']}>
-                <h2 className={styles['reviews__item-title']}>Ольга С.</h2>
+                <h2 className={styles['reviews__item-title']}>Анна Т.</h2>
                 <p className={styles['reviews__item-description']}>
-                  Спасибо за отличный сервис! Нашли няню быстро, дочка сразу пошла на контакт. Было спокойно оставить ребёнка, всё прошло замечательно!
+                  Спасибо команде сервиса! После регистрации не прошло и недели, как мне предложили подходящую семью. Работать легко: все договорённости соблюдаются, и я занимаюсь тем, что люблю — детьми.
                 </p>
               </div>
             </SwiperSlide>
             <SwiperSlide  className={styles['reviews__item']}>
               <div className={styles['reviews__item-top']}>
-                <h2 className={styles['reviews__item-title']}>Ольга С.</h2>
+                <h2 className={styles['reviews__item-title']}>Валерия М.</h2>
                 <p className={styles['reviews__item-description']}>
-                  Спасибо за отличный сервис! Нашли няню быстро, дочка сразу пошла на контакт. Было спокойно оставить ребёнка, всё прошло замечательно!
+                  Очень рада, что вышла на эту семью через сервис. Ребёнок — спокойный, родители — вежливые, чётко всё объясняют. После прошлых сложных клиентов — это просто подарок!
                 </p>
               </div>
             </SwiperSlide>
             <SwiperSlide  className={styles['reviews__item']}>
               <div className={styles['reviews__item-top']}>
-                <h2 className={styles['reviews__item-title']}>Ольга С.</h2>
+                <h2 className={styles['reviews__item-title']}>Наталья Х.</h2>
                 <p className={styles['reviews__item-description']}>
                   Спасибо за отличный сервис! Нашли няню быстро, дочка сразу пошла на контакт. Было спокойно оставить ребёнка, всё прошло замечательно!
                 </p>

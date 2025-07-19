@@ -24,6 +24,12 @@
         margin-bottom: 24px; 
     }
 
+    &__list {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+
     &__bg {
  
     }
@@ -58,6 +64,11 @@
             line-height: 48px;
             margin-bottom: 48px;
             max-width: 934px;
+        }
+
+        
+        &__list {
+            gap: 24px;
         }
     }
 }

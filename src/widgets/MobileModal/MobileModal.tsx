@@ -9,13 +9,15 @@ const MobileModal = ({
   isOpen,
   setOpen,
   children,
-  title,next
+  title,next,
+  button_title = 'Сохранить'
 }: {
   isOpen: boolean
   setOpen: (open: boolean, type:string) => void,
   next: () => void,
   children?: React.ReactNode,
   title: string,
+  button_title?: string,
 }) => {
   const y = useMotionValue(0)
 
@@ -78,7 +80,7 @@ const MobileModal = ({
               </div>
 
               {children}
-              <Button onClick={next} text="Сохранить" variation="second" type="button" />
+              <Button onClick={next} text={button_title} variation="second" type="button" />
             </div>
           </motion.div>
         </div>

@@ -1,10 +1,19 @@
 
-import { homeFaqData } from '@/entities/FAQ/home__page'
+import { Key } from 'react'
 import styles from './Faq.module.scss'
 import FAQ_Item from './Faq_Item'
 
+type Props = {
+    items: any,
+}
 
-const FAQ = () => {
+type Item = {
+    id: Key | null | undefined,
+    title: string,
+    description: string,
+}
+
+const FAQ:React.FC<Props> = ({items}) => {
     return (
         <section className={styles['faq']}>
             <div className={styles['faq__container']}>
@@ -13,7 +22,7 @@ const FAQ = () => {
                 <ul className={styles['faq__list']}>
 
                     {
-                        homeFaqData.map((item) => 
+                        items.map((item: Item) => 
                             <FAQ_Item key={item.id}
                                 title={item.title}
                                 description={item.description}

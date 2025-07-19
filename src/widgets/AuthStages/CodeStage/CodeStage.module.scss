@@ -8,41 +8,37 @@
     width: 100%;
     padding: 32px;
 
+    &__prev {
+        font-family: Onest;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 24px;
+        letter-spacing: 0px;
+        text-decoration: underline;
+        color: #7C8092;
+        margin-bottom: 48px;
+        cursor: pointer;
+    }
+
 
     &__title {
-        font-family: Transforma Mix;
+        font-family: Onest;
         font-weight: 600;
-        font-size: 40px;
-        line-height: 28px;
+        font-size: 28px;
+        line-height: 39px;
         letter-spacing: 0px;
         color: #252525;
+        margin-bottom: 24px;
+    }
 
-        margin-bottom: 28px;
+    &__phone {
+        color: #7733F4;
     }
 
     &__roles {
         display: flex;
         gap: 12px;
         margin-bottom: 40px;
-    }
-
-    &__role, &__role_active {
-        font-family: Onest;
-        font-weight: 400;
-        font-size: 20px;
-        line-height: 26px;
-        color: #7733F4;
-        border: 1px solid #7733F4;
-
-        padding: 11px;
-        padding-inline: 22px;
-        border-radius: 66px;
-        cursor: pointer;
-    }
-
-    &__role_active {
-        color: #FFFFFF;
-        background-color: #7733F4;
     }
 
     &__bottom {
@@ -68,19 +64,24 @@
         width: 100%;
     }
 
-    @media screen and (max-width: $tablets-max) {
+    @media screen and (max-width: $tablets) {
         &__title {
-            font-size: 24px;
-            line-height: 38px;
-            margin-bottom: 24px;
+            font-size: 20px;
+            line-height: 28px;
+            margin-bottom: 16px;
         }
-
-        &__roles {
-            margin-bottom: 32px;
-        }
-
+        
         &__bottom {
             gap: 12px;
+        }
+
+        &__phone {
+            display: block;
+            width: 100%;
+        }
+
+        &__prev {
+            margin-bottom: 32px;
         }
     }
 

@@ -1,9 +1,11 @@
 'use client'
 
-import { useHeader } from '@/entities/stores/useHeader'
-import styles from './HeaderMenu.module.scss'
-import { motion, useMotionValue, useTransform, animate } from 'framer-motion'
-import { useEffect } from 'react'
+import { useHeader } from '@/entities/stores/useHeader';
+import styles from './HeaderMenu.module.scss';
+import { motion, useMotionValue, useTransform, animate } from 'framer-motion';
+import { useEffect } from 'react';
+import { usePathname, useRouter } from 'next/navigation';
+import { useAuth } from '@/entities/stores/useAuth';
 
 const HeaderMenu = () => {
   const header = useHeader()
@@ -31,6 +33,13 @@ const HeaderMenu = () => {
   }
 }, [header.isOpenMenu])
 
+  const pathname = usePathname();
+
+  const authState = useAuth();
+
+  const route = useRouter();
+
+
   return (
     <motion.div
       style={{ x }}
@@ -38,13 +47,45 @@ const HeaderMenu = () => {
     >
       <div className={styles['header-menu__container']}>
         <ul className={styles['header-menu__list']}>
-          <li onClick={() => header.setOpenMenu(false)} className={styles['header-menu__item']}>
-            <a href="#about">О нас</a>
-          </li>
-          <li onClick={() => header.setOpenMenu(false)} className={styles['header-menu__item']}><a href="#">Регистрация для нянь</a></li>
-          <li onClick={() => header.setOpenMenu(false)} className={styles['header-menu__item']}><a href="#storage-babysitter">База нянь</a></li>
-          <li onClick={() => header.setOpenMenu(false)} className={styles['header-menu__item']}><a href="#founder">Об основателе</a></li>
-          <li onClick={() => header.setOpenMenu(false)} className={styles['header-menu__item']}><a href="#stages">Этапы работ</a></li>
+          {
+            pathname === '/parent' &&
+            <>
+                <li onClick={() => header.setOpenMenu(false)} className={styles['header-menu__item']}>
+                  <a href="#about">О нас</a>
+                </li>
+                <li onClick={() => header.setOpenMenu(false)} className={styles['header-menu__item']}><a  onClick={() => { 
+                    authState.setRole('babysitter');
+                    route.push('/auth')
+                  }}>Регистрация для нянь</a></li>
+                <li onClick={() => header.setOpenMenu(false)} className={styles['header-menu__item']}><a href="#storage-babysitter">База нянь</a></li>
+                <li onClick={() => header.setOpenMenu(false)} className={styles['header-menu__item']}><a href="#founder">Об основателе</a></li>
+                <li onClick={() => header.setOpenMenu(false)} className={styles['header-menu__item']}><a href="#stages">Этапы работ</a></li>
+            </>
+          }
+          {
+            pathname === '/babysitter' &&
+            <>
+                <li onClick={() => header.setOpenMenu(false)} className={styles['header-menu__item']}>
+                  <a href="#about">О нас</a>
+                </li>
+                <li onClick={() => header.setOpenMenu(false)} className={styles['header-menu__item']}>
+                  <a onClick={() => { 
+                    authState.setRole('parent');
+                    route.push('/auth')
+                  }}>Регистрация для мам</a>
+                </li>
+                <li onClick={() => header.setOpenMenu(false)} className={styles['header-menu__item']}><a href="#stages">Как мы работаем</a></li>
+                <li onClick={() => header.setOpenMenu(false)} className={styles['header-menu__item']}><a href="#reviews">Вакансии мам</a></li>
+                <li onClick={() => header.setOpenMenu(false)} className={styles['header-menu__item']}><a href="#solution">Чем предстоит заниматься</a></li>
+            </>
+          }
+          {
+            pathname === '/auth' &&
+            <li onClick={() => header.setOpenMenu(false)} className={styles['header-menu__item']}>
+              <a href="/parent">На главную</a>
+            </li>
+
+          }
         </ul>
 
         <div className={styles['header-menu__bottom']}>

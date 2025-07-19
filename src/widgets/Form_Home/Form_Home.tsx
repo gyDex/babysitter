@@ -25,7 +25,7 @@ const Form_Home = () => {
                 
                 <form className={styles['form-home__form']} action="">
                     <div className={styles['form-home__form-row']}>
-                        <input placeholder='Email' type="text" className={styles['form-home__input']} />
+                        <input placeholder="8-___-___-____"   pattern="8-[0-9]{3}-[0-9]{3}-[0-9]{4}" type="text" className={styles['form-home__input']} />
 
                         <Button text="Отправить" variation='second'  type="submit" />
                     </div>
