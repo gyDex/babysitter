@@ -72,11 +72,14 @@ const Footer = () => {
 
                     </ul>
 
-                    <div className={styles['footer__data']}>
-                        <span>ИП Муртазина Снежана Валерьевна</span>
-                        <span>ИНН: 210324399274</span>
-                        <span>ОГРНИП: 323169000065417</span>
-                    </div>
+                    {
+                        authState.isAuth &&    
+                        <div className={styles['footer__data']}>
+                            <span>ИП Муртазина Снежана Валерьевна</span>
+                            <span>ИНН: 210324399274</span>
+                            <span>ОГРНИП: 323169000065417</span>
+                        </div>
+                    }
                 </div>
 
 
