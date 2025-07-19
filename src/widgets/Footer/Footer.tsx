@@ -14,7 +14,7 @@ const Footer = () => {
                 <div className={styles['footer__module']}>
                     <h2 className={styles['footer__module-title']}>
                         {
-                            !authState.isAuth ? 'Остались вопросы?' : 'Нужна помощь?'   
+                            authState.isAuth ? 'Остались вопросы?' : 'Нужна помощь?'   
                         }
                     </h2>
 
