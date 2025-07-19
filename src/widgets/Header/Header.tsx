@@ -141,7 +141,7 @@ const Header = () => {
 
 
                 {
-                    city !== undefined && pathName === '/auth' && 
+                    pathName === '/auth' && 
                     <Link href={'/parent'} className={styles['header__btn-home']}>
                         На главную
                     </Link>
