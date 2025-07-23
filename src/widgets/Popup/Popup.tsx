@@ -13,16 +13,18 @@ const Popup = ({
   style,
   cross = false,
   className,
+  isNotBtn = false
 }: {
   isOpen: boolean
   setOpen: (open: boolean, type:string) => void,
   next: () => void,
   children?: React.ReactNode,
-  title: string | boolean,
+  title: string | boolean | React.ReactNode,
   btnTitle?: string,
   style?: CSSProperties | undefined ,
   cross?: boolean,
   className?: string,
+  isNotBtn?: boolean,
 }) => {
     const handleOverlayClick = () => {
         setOpen(false, '')
@@ -43,16 +45,19 @@ const Popup = ({
                             exit={{ opacity: 0 }}
                             transition={{ duration: 0.1, ease: 'easeInOut' }}
                         >
-                            <div className={!cross ? styles['popup__inner'] : styles['popup__inner-cross']}>
-                                <button onClick={handleOverlayClick} className={styles['popup__cross']}>
-                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M12 4L4 12" stroke="#252525" 
-strokeWidth="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
-                                        <path d="M4 4L12 12" stroke="#252525" 
+                            <div className={cross ? styles['popup__inner'] : styles['popup__inner-cross']}>
+                                {
+                                    cross &&
+                                    <button onClick={handleOverlayClick} className={styles['popup__cross']}>
+                                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M12 4L4 12" stroke="#252525" 
+    strokeWidth="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <path d="M4 4L12 12" stroke="#252525" 
 
-strokeWidth="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
-                                    </svg>
-                                </button>
+    strokeWidth="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </button>
+                                }
 
                                 <div className={styles['popup__content']}> {
                                         
@@ -67,10 +72,14 @@ strokeWidth="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
                                             {children}
                                         </div>
                                     }
+
+                                    {
+                                        !isNotBtn &&
+                                        <div className={styles['popup__bottom']}>
+                                            <Button  onClick={next} text={btnTitle} variation="second" type="button" />
+                                        </div>
+                                    }
             
-                                    <div className={styles['popup__bottom']}>
-                                        <Button  onClick={next} text={btnTitle} variation="second" type="button" />
-                                    </div>
                                 </div>
                             </div>
                         </motion.div>

@@ -10,7 +10,8 @@
     border-top-right-radius: 24px;
     overflow: hidden;
     margin-top: 32px;
-            color: white;
+    color: white;
+    flex-shrink: 0;
 
     &__data {
         display: flex;
@@ -132,8 +133,6 @@
         flex-direction: column;
         gap: 12px;
     }
-
-
 
     @media screen and (max-width: $desktops-sm) {
         &__top {

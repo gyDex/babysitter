@@ -4,6 +4,104 @@
     padding: 16px;
     width: 100%;
 
+    &__message {
+        background-color: #F9F9F9;
+        border-radius: 12px;
+        padding: 16px;
+        margin-top: 32px;
+        margin-bottom: 20px;
+        font-family: Inter;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 18px;
+        letter-spacing: 0px;
+
+        display: block;
+        max-width: 100%; // гарантируем ограничение
+        overflow: hidden;
+        word-break: break-word;
+    }
+
+    &__message-title {
+        font-family: Inter;
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 18px;
+        letter-spacing: 0px;
+        color: #191816;
+    }
+
+    &__message-text {
+        transition: all 0.3s ease;
+        display: block;
+        overflow: visible;
+        margin-top: 8px;
+    }
+
+    &__message-text--clamped {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3; // или 4, по вашему желанию
+        overflow: hidden;
+    }
+
+    .card-babysit__message-text {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-3 {
+  -webkit-line-clamp: 3;
+}
+
+    &__read-more {
+        background: none;
+        border: none;
+        color: #6C63FF;
+        font-weight: 500;
+        cursor: pointer;
+        font-size: 14px;
+        padding: 0;
+    }
+
+    
+    .card-babysit__message-text {
+    font-size: 14px;
+    line-height: 18px;
+    overflow: hidden;
+
+    &--clamped {
+        display: -webkit-box;
+        -webkit-line-clamp: 3; // <= кол-во строк
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+    }
+
+
+    .card-babysit__read-more {
+        margin-top: 8px;
+    }
+
+    &__btn-more {
+        border: 2px solid #7733F4;
+        width: 100%;
+        border-radius: 16px;
+        border-width: 2px;
+        padding: 16px;
+
+        font-family: Onest;
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 100%;
+        letter-spacing: -5%;
+        color: #7733F4;
+        cursor: pointer;
+
+        margin-top: 24px;
+    }
+
     &__top-info-mobile {
         display: flex;
         justify-content: space-between;
@@ -246,6 +344,10 @@
     @media screen and (min-width: $tablets) {
         padding: 20px;
 
+
+        &__btn-more {
+            margin-top: 32px;
+        }
 
         &__avatar::before {
             bottom: -3px;

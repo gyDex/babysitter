@@ -7,16 +7,19 @@ type Props = {
     person: string,
     quote: any,
     tasks?: any,
+    isRes?: boolean,
+    isEdit?: boolean,
+    isDetail?: boolean,
 }
 
-const ResponseFeedback:React.FC<Props> = ({person, quote, tasks, name}) => {
+const ResponseFeedback:React.FC<Props> = ({isEdit = false,isDetail = false, isRes = true ,person, quote, tasks, name}) => {
     const modalState = useMobileState();
 
   return (
     <div className={styles['response-feedback']}>
         <div className={styles['response-feedback__top-info-mobile']}>
             <div className={styles['response-feedback__top-label-left']}>
-                <div className={styles['response-feedback__top-info-label']}>
+                <div className={styles['response-feedback__top-info-label_city']}>
                     📍Москва
                 </div>
 
@@ -52,8 +55,14 @@ const ResponseFeedback:React.FC<Props> = ({person, quote, tasks, name}) => {
                     </div>
 
                     <div className={styles['response-feedback__top-info-right']}>
-                        <div className={styles['response-feedback__top-info-label']}>
-                            Активно ищу работу
+                        <div className={styles['response-feedback__top-info-labels']}>
+                            <div className={styles['response-feedback__top-info-label_city']}>
+                                📍Москва
+                            </div>
+
+                            <div className={styles['response-feedback__top-info-label']}>
+                                Нужна няня
+                            </div>
                         </div>
 
                         <span className={styles['response-feedback__words']}>
@@ -114,11 +123,67 @@ const ResponseFeedback:React.FC<Props> = ({person, quote, tasks, name}) => {
                 </span>
             </div>
 
-            <button onClick={() => {
-                modalState.setRegister(true, '')
-            }} className={styles['response-feedback__bottom-btn']}>
-                Откликнуться
-            </button>
+            {
+                (isDetail) && 
+                <div>
+                    <p className={styles['response-feedback__subtitle']}>
+                        <b>Дополнительно от мамы:</b>
+                    </p>
+
+                    <p className={styles['response-feedback__text']}>
+                        «Мы ищем няню, которая сможет стать для Марка другом и наставником. Очень ценим доброту, терпение и искреннюю любовь к детям. Хотелось бы, чтобы няня помогала развивать любознательность, играла в развивающие игры, читала книги и проводила время на свежем воздухе.
+                    </p>
+
+                    <p className={styles['response-feedback__text']}>
+                        Мы готовы создать комфортные условия для работы, всегда открыты к диалогу и учитываем пожелания няни. У нас спокойная семья без конфликтов, верим, что уважение и понимание — основа хороших отношений.
+                    </p>
+
+                    <p className={styles['response-feedback__text']}>
+                        Будем рады сотрудничеству с профессионалом, который полюбит нашего сына и сможет поддержать его в процессе взросления.»
+                    </p>
+                </div>
+            }
+
+            {
+                isRes &&<button onClick={() => {
+                    modalState.setRegister(true, '')
+                }} className={styles['response-feedback__bottom-btn']}>
+                    Откликнуться
+                </button>
+            }
+
+            {
+                (isDetail) &&
+                <div className={styles['response-feedback__detail']}>
+                    <span className={styles['response-feedback__bottom-title']}>Напишите дополнительную информацию</span>
+
+                    <textarea className={styles['response-feedback__textarea']} name="message" id="message" placeholder='Напишите сопроводительное письмо, рассказ' />
+                </div>
+            }
+
+
+            <div className={styles['response-feedback__detail-buttons']}>
+                {
+                    (isEdit || isDetail) &&<button onClick={() => {
+                        modalState.setRegister(true, '')
+                    }}
+                    style={{
+                        marginTop: isDetail ? '0px' : '12px',
+                    }}
+                    className={styles['response-feedback__bottom-btn_edit']}>
+                        Редактировать вакансию
+                    </button>
+                }
+
+                {
+                    (isDetail) &&
+                    <button onClick={() => {
+                        // modalState.setRegister(true, '')
+                    }} className={styles['response-feedback__bottom-btn_save']}>
+                        Сохранить
+                    </button>
+                }
+            </div>
         </div>
 
     </div>

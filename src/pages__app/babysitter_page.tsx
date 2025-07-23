@@ -5,7 +5,6 @@ import { useMobileState } from "@/entities/stores/useMobileModal"
 import { setRoleCookies } from "@/features/setRoleCookie"
 import BeforePay from "@/widgets/BeforePay/BeforePay"
 import FAQ from "@/widgets/Faq/Faq"
-import Footer from "@/widgets/Footer/Footer"
 import HeaderMenu from "@/widgets/HeaderMenu/HeaderMenu"
 import MobileModal from "@/widgets/MobileModal/MobileModal"
 import Popup from "@/widgets/Popup/Popup"
@@ -278,8 +277,6 @@ export const BabysitterPage = () => {
                 <Solutions title="Чем вам предстоит заниматься" />   
                 <FAQ items={babyFAQData} />
             </div>
-            
-            <Footer />
         </>
     )
 }

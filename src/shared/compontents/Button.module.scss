@@ -1,4 +1,4 @@
-.button, .button-sec, .button-three  {
+.button, .button-sec, .button-three, .button-four  {
     min-width: 196px;
     min-height: 64px;
     border-radius: 52px;
@@ -34,6 +34,18 @@
         padding-inline: 16px;
         padding-top: 16px;
         padding-bottom: 16px;
+    }
+
+    &-four {
+        border-radius: 16px;
+        background: transparent;
+        color: #7733F4;
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        // padding-inline: 64px;
+        border: 2px solid #7733F4;
+        margin-top: 0px;
     }
 
     @media (hover: hover) and (pointer: fine) {

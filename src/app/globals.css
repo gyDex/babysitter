@@ -45,6 +45,10 @@ html {
   scroll-behavior: smooth;
 }
 
+main {
+    flex-grow: 1;
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -85,8 +89,67 @@ html {
   --radius-xl: calc(var(--radius) + 4px);
 }
 
+html, body {
+  height: 100%;
+}
+
 body {
     background-color: #F1EFE5;
+
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.rc-slider-rail, .rc-slider-track {
+  top: 10px !important;
+}
+
+.rc-slider-track {
+  background-color: #7733F4 !important;
+}
+
+.rc-slider-disabled {
+  background-color: transparent !important;
+}
+
+ 
+  .modal-filter .modal-mobile__content button {
+  border: none !important;
+  box-shadow: none !important;
+  }
+
+
+.rc-slider-handle{
+  opacity: 1 !important;
+  background: white !important;
+  border: 2px solid #7733F4 !important;
+  height: 24px !important;
+  width: 24px !important;
+  box-shadow: none !important;
+}
+
+.rc-slider-handle::before{
+  position: absolute !important;
+  top: 4px !important;
+  left: 4px !important;
+  width: 12px !important;
+  height: 12px !important;
+  background-color: #7733F4 !important;
+  border-radius: 100% !important;
+  content: '' !important;
+}
+
+.rc-slider-disabled .rc-slider-track {
+  background-color: #D9D9D9 !important;
+}
+
+.rc-slider-disabled .rc-slider-handle{
+  border: 2px solid #D9D9D9 !important;;
+}
+
+.rc-slider-disabled .rc-slider-handle::before{
+  background-color: #D9D9D9 !important;
 }
 
 :root {

@@ -6,12 +6,10 @@ import { setRoleCookies } from "@/features/setRoleCookie"
 import CardBabysitterList from "@/widgets/CardBabysitterList/CardBabysitterList"
 import Changes from "@/widgets/Changes/Changes"
 import FAQ from "@/widgets/Faq/Faq"
-import Footer from "@/widgets/Footer/Footer"
 import Form_Home from "@/widgets/Form_Home/Form_Home"
 import Guarantees from "@/widgets/Guarantees/Guarantees"
 import HeaderMenu from "@/widgets/HeaderMenu/HeaderMenu"
 import Main__Hero from "@/widgets/main__hero/main__hero"
-import MobileModal from "@/widgets/MobileModal/MobileModal"
 import Popup from "@/widgets/Popup/Popup"
 import RadioItem from "@/widgets/RadioItem/RadioItem"
 import Reviews from "@/widgets/Reviews/Reviews"
@@ -26,6 +24,7 @@ import { setCityCookies } from "@/features/setCityCookies"
 import Cookies from 'js-cookie'
 import { homeFaqData } from "@/entities/FAQ/home__page"
 import BeforePay from "@/widgets/BeforePay/BeforePay"
+import MobileModal from "@/widgets/MobileModal/MobileModal"
 
 export const HomePage = () => {
     const mobileState = useMobileState();
@@ -43,10 +42,8 @@ export const HomePage = () => {
     setRole(roleCookie)
     setCity(cityCookie)
     setLoaded(true)
-
-    console.log('Role:', roleCookie)
-    console.log('City:', cityCookie)
   }, [])
+  
     const router = useRouter();
 
     if (!loaded) return null  
@@ -209,8 +206,6 @@ export const HomePage = () => {
                 <Form_Home />
                 <FAQ items={homeFaqData} />
             </div>
-            
-            <Footer />
         </>
     )
 }

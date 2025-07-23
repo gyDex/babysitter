@@ -3,21 +3,23 @@
 import Button from '@/shared/compontents/Button'
 import styles from './MobileModal.module.scss'
 import { motion, AnimatePresence, useMotionValue } from 'framer-motion'
-import { useEffect } from 'react'
+import React, { useEffect } from 'react'
 
 const MobileModal = ({
   isOpen,
   setOpen,
   children,
   title,next,
-  button_title = 'Сохранить'
+  button_title = 'Сохранить',
+  variation,
 }: {
   isOpen: boolean
   setOpen: (open: boolean, type:string) => void,
   next: () => void,
   children?: React.ReactNode,
-  title: string,
+  title: string | React.ReactNode,
   button_title?: string,
+  variation?: 'filter'
 }) => {
   const y = useMotionValue(0)
 
@@ -44,7 +46,7 @@ const MobileModal = ({
       {isOpen && (
         <div className={styles.overlay} onClick={handleOverlayClick}>
           <motion.div
-            className={styles.modal}
+            className={variation === 'filter' ? styles['modal-filter'] : styles.modal}
             onClick={stopClickPropagation}
             initial={{ y: '100%' }}
             animate={{ y: 0 }}
