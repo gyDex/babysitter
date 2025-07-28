@@ -1,9 +1,13 @@
-import { useEditStage } from '@/entities/stores/useEditStage';
+
+import { useEditParentStage } from '@/entities/stores/useEditParentStage';
 import styles from './profile-edit-stage.module.scss'
+import { useAnketsParent } from '@/entities/stores/useAnketsParent';
 
 const ProfileEditFiveStage = () => {
-    const stage = useEditStage();
+    const stage = useEditParentStage();
 
+    const { description, setDescription } = useAnketsParent();
+    
     return (
         <div className={styles['profile-edit-stage']}>
             <div className={styles['profile-edit-stage__top']}>
@@ -24,9 +28,9 @@ const ProfileEditFiveStage = () => {
 
             <span className={styles['profile-edit-stage__description']}>Важные детали для специалиста, о которых мы не спросили</span>
 
-            <textarea placeholder='Описание' className='border-1 border-[#D9D9D9] w-full px-[16px] py-[18px] rounded-[16px] text-[#D9D9D9] text-[18px] leading-[24px] font-normal min-h-[145px] min-[768px]:hidden' />
+            <textarea value={description}  onChange={(e) => setDescription(e.currentTarget.value)} placeholder='Описание' className='border-1 border-[#D9D9D9] w-full px-[16px] py-[18px] rounded-[16px] text-[#D9D9D9] text-[18px] leading-[24px] font-normal min-h-[145px] min-[768px]:hidden' />
 
-            <input className='border-1 border-[#D9D9D9] w-full px-[16px] py-[18px] rounded-[16px] text-[#D9D9D9] text-[18px] leading-[24px] font-normal max-[768px]:hidden' placeholder='Описание'  />
+            <input value={description}  onChange={(e) => setDescription(e.currentTarget.value)} className='border-1 border-[#D9D9D9] w-full px-[16px] py-[18px] rounded-[16px] text-[#D9D9D9] text-[18px] leading-[24px] font-normal max-[768px]:hidden' placeholder='Описание'  />
             
             <div className={styles['profile-edit-stage__bottom']}>
                 <button onClick={() => stage.setStage('four')} className={styles['profile-edit-stage__btn-bottom_prev']}>

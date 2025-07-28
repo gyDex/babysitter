@@ -54,7 +54,7 @@ const HeaderMenu = () => {
       <div className={styles['header-menu__container']}>
         <ul className={styles['header-menu__list']}>
           {
-            pathname === '/parent' &&
+            (pathname === '/parent' || pathname.includes('/profile-babysitter/')) &&
             <>
                 <li onClick={() => header.setOpenMenu(false)} className={styles['header-menu__item']}>
                   <a href="#about">О нас</a>
@@ -89,7 +89,8 @@ const HeaderMenu = () => {
           {
             pathname.includes('/profile-parent/') &&
             <>
-                <div className={styles['header-menu__city']}>
+                {
+                  city && <div className={styles['header-menu__city']}>
                   <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <g clip-path="url(#clip0_591_10549)">
                       <path d="M8 5.5C8.29667 5.5 8.58668 5.58797 8.83336 5.7528C9.08003 5.91762 9.27229 6.15189 9.38582 6.42598C9.49935 6.70006 9.52906 7.00166 9.47118 7.29264C9.4133 7.58361 9.27044 7.85088 9.06066 8.06066C8.85088 8.27044 8.58361 8.4133 8.29264 8.47118C8.00167 8.52906 7.70007 8.49935 7.42598 8.38582C7.15189 8.27229 6.91762 8.08003 6.7528 7.83336C6.58797 7.58668 6.5 7.29667 6.5 7C6.5 6.60218 6.65804 6.22064 6.93934 5.93934C7.22065 5.65804 7.60218 5.5 8 5.5ZM8 4.5C7.50555 4.5 7.0222 4.64662 6.61108 4.92133C6.19995 5.19603 5.87952 5.58648 5.6903 6.04329C5.50108 6.50011 5.45157 7.00277 5.54804 7.48773C5.6445 7.97268 5.8826 8.41814 6.23223 8.76777C6.58187 9.1174 7.02732 9.3555 7.51228 9.45196C7.99723 9.54843 8.4999 9.49892 8.95671 9.3097C9.41353 9.12048 9.80397 8.80005 10.0787 8.38893C10.3534 7.9778 10.5 7.49445 10.5 7C10.5 6.33696 10.2366 5.70107 9.76777 5.23223C9.29893 4.76339 8.66304 4.5 8 4.5Z" fill="#252525"/>
@@ -105,7 +106,12 @@ const HeaderMenu = () => {
                   {
                       city
                   }
+
+      
+                  
                 </div>
+                
+              } 
 
                 <li onClick={() => header.setOpenMenu(false)} className={styles['header-menu__item']}>
                   <a href="#about">Подборка нянь</a>

@@ -12,6 +12,7 @@
 }
 
 .popup {
+
     &__inner, &__inner-cross {
         background-color: #FFFFFF;
         min-width: 407px;
@@ -19,6 +20,8 @@
         border-radius: 16px;
         padding: 32px;
         position: relative;
+    overflow: hidden;
+
     }
 
     &__inner-cross {

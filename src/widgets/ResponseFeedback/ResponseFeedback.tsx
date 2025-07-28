@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import styles from './ResponseFeedback.module.scss'
 import { useMobileState } from '@/entities/stores/useMobileModal'
+import Button from '@/shared/compontents/Button'
 
 type Props = {
     name: string,
@@ -10,9 +11,10 @@ type Props = {
     isRes?: boolean,
     isEdit?: boolean,
     isDetail?: boolean,
+    IsRes?: boolean,
 }
 
-const ResponseFeedback:React.FC<Props> = ({isEdit = false,isDetail = false, isRes = true ,person, quote, tasks, name}) => {
+const ResponseFeedback:React.FC<Props> = ({IsRes=false, isEdit = false,isDetail = false, isRes = true ,person, quote, tasks, name}) => {
     const modalState = useMobileState();
 
   return (
@@ -161,10 +163,31 @@ const ResponseFeedback:React.FC<Props> = ({isEdit = false,isDetail = false, isRe
                 </div>
             }
 
+            {
+                IsRes && <>
+                    <div className='flex gap-[12px] mt-[16px] max-[768px]:flex-col min-[768px]:max-w-[100px]'>
+                        <Button text='Откликнуться' style={{
+                            minHeight: '48px',
+                            fontSize: '18px',
+                            height: 'fit-content',
+                            marginTop: '0px',
+                            width: '100%',
+                        }} type='button' variation='second' heart={false}/> 
+                        <Button text='Отклик без письма' style={{
+                            minHeight: '48px',
+                            fontSize: '18px',
+                            height: 'fit-content',
+                            width: '100%',
+                            marginTop: '0px'
+                        }} type='button' variation='four'/>                    
+                    </div>
+                </>
+            }
+
 
             <div className={styles['response-feedback__detail-buttons']}>
                 {
-                    (isEdit || isDetail) &&<button onClick={() => {
+                    (isEdit || isDetail) && !IsRes &&<button onClick={() => {
                         modalState.setRegister(true, '')
                     }}
                     style={{
@@ -176,7 +199,7 @@ const ResponseFeedback:React.FC<Props> = ({isEdit = false,isDetail = false, isRe
                 }
 
                 {
-                    (isDetail) &&
+                    (isDetail && !IsRes) &&
                     <button onClick={() => {
                         // modalState.setRegister(true, '')
                     }} className={styles['response-feedback__bottom-btn_save']}>

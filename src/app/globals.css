@@ -20,6 +20,66 @@
     }
 }
 
+.text-align-center .public-DraftStyleDefault-ltr {
+  text-align: center;
+}
+
+.text-align-right .public-DraftStyleDefault-ltr {
+  text-align: right;
+}
+
+.text-align-left .public-DraftStyleDefault-ltr {
+  text-align: left;
+}
+
+.text-align-justify .public-DraftStyleDefault-ltr {
+  text-align: justify;
+}
+
+.public-DraftEditorPlaceholder-root {
+  font-family: Onest;
+  font-weight: 400;
+  font-style: Regular;
+  font-size: 12px;
+  leading-trim: NONE;
+  line-height: 150%;
+  letter-spacing: 0px;
+}
+
+.popup-inner {
+  
+}
+
+.public-DraftEditorPlaceholder-root > div{
+  height: 100%;
+}
+
+.public-DraftStyleDefault-block .public-DraftStyleDefault-ltr {
+  height: 100% !important;
+  display: block;
+}
+
+.public-DraftStyleDefault-ltr {
+  height: 100% !important;
+  display: block;
+}
+
+.DraftEditor-root {
+  height: 100% !important;
+  display: block;
+}
+
+@media screen and (min-width: 768px) {
+  .public-DraftEditorPlaceholder-root {
+    font-family: Onest;
+    font-weight: 400;
+    font-style: Regular;
+    font-size: 14px;
+    line-height: 150%;
+    letter-spacing: 0px;
+  }
+}
+
 .not-register-modal button  {
   max-width: 316px;
   font-family: Onest;

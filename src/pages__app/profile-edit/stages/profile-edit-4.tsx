@@ -1,11 +1,22 @@
-import { useEditStage } from '@/entities/stores/useEditStage';
+
+import { useEditParentStage } from '@/entities/stores/useEditParentStage';
 import styles from './profile-edit-stage.module.scss'
 import ProfileEditCheckItem from './ProfileEditCheckItem';
+import { useAnketsParent } from '@/entities/stores/useAnketsParent';
 
 
 const ProfileEditFourStage = () => {
-    const stage = useEditStage();
+    const stage = useEditParentStage();
     
+    const { duties, setDuties } = useAnketsParent();
+
+    const handleChange = (index: number) => {
+        const prev = duties;
+        prev[index] = !prev[index];
+        setDuties(prev);
+    }
+
+    console.log(duties)
 
     return (
         <div className={styles['profile-edit-stage']}>
@@ -23,24 +34,24 @@ const ProfileEditFourStage = () => {
                 <span className={styles['profile-edit-stage__top-description']}>шаг 4/7</span>
             </div>
 
-            <h2 className={styles['profile-edit-stage__title']}>Остались пожелания?</h2>
+            <h2 className={styles['profile-edit-stage__title']}>Какие обязанности вы ожидаете, чтобы няня также выполняла?</h2>
 
             <div className={styles['profile-edit-stage__content_three']}>
                 <div className={styles['profile-edit-stage__check-list_three']}> 
-                    <ProfileEditCheckItem text='Приготовление пищи' />
-                    <ProfileEditCheckItem text='Организация дет. мероприятий' />
-                    <ProfileEditCheckItem text='Купание детей' />
-                    <ProfileEditCheckItem text='Стирка и глажка одежды' />
-                    <ProfileEditCheckItem text='Помощь с дом. заданиями' />
-                    <ProfileEditCheckItem text='Работа с двойней, тройней' />
-                    <ProfileEditCheckItem text='Покупка продуктов' />
-                    <ProfileEditCheckItem text='Поддерживать порядок в комнате' />
-                    <ProfileEditCheckItem text='Уборка в доме' />
-                    <ProfileEditCheckItem text='Поддержание порядка' />
-                    <ProfileEditCheckItem text='Сопровождение детей' />
-                    <ProfileEditCheckItem text='Детская гигиена' />
-                    <ProfileEditCheckItem text='Уход за домашними животными' />
-                    <ProfileEditCheckItem text='Уход за растениями' />
+                    <ProfileEditCheckItem checked={duties[0]} onChange={() => handleChange(0)} text='Приготовление пищи' />
+                    <ProfileEditCheckItem checked={duties[1]} onChange={() => handleChange(1)} text='Организация дет. мероприятий' />
+                    <ProfileEditCheckItem checked={duties[2]} onChange={() => handleChange(2)} text='Купание детей' />
+                    <ProfileEditCheckItem checked={duties[3]} onChange={() => handleChange(3)} text='Стирка и глажка одежды' />
+                    <ProfileEditCheckItem checked={duties[4]} onChange={() => handleChange(4)} text='Помощь с дом. заданиями' />
+                    <ProfileEditCheckItem checked={duties[5]} onChange={() => handleChange(5)} text='Работа с двойней, тройней' />
+                    <ProfileEditCheckItem checked={duties[6]} onChange={() => handleChange(6)} text='Покупка продуктов' />
+                    <ProfileEditCheckItem checked={duties[7]} onChange={() => handleChange(7)} text='Поддерживать порядок в комнате' />
+                    <ProfileEditCheckItem checked={duties[8]} onChange={() => handleChange(8)} text='Уборка в доме' />
+                    <ProfileEditCheckItem checked={duties[9]} onChange={() => handleChange(9)} text='Поддержание порядка' />
+                    <ProfileEditCheckItem checked={duties[10]} onChange={() => handleChange(10)} text='Сопровождение детей' />
+                    <ProfileEditCheckItem checked={duties[11]} onChange={() => handleChange(11)} text='Детская гигиена' />
+                    <ProfileEditCheckItem checked={duties[12]} onChange={() => handleChange(12)} text='Уход за домашними животными' />
+                    <ProfileEditCheckItem checked={duties[13]} onChange={() => handleChange(13)} text='Уход за растениями' />
                 </div>
             </div>
 

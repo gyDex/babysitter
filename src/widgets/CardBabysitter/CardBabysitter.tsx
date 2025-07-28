@@ -4,13 +4,15 @@ import Image from 'next/image'
 import styles from './CardBabysitter.module.scss'
 import AudioPlayer from '../AudioPlayer/AudioPlayer'
 import React, { useEffect, useRef, useState } from 'react'
+import { useRouter } from 'next/navigation'
 
 type Props = {
     isMessage?: boolean | string | undefined,
     isMoreBtn?: boolean,
+    isResponseBtn?: boolean,
 }
 
-const CardBabysitter:React.FC<Props> = ({isMessage, isMoreBtn = false}) => {
+const CardBabysitter:React.FC<Props> = ({isMessage, isMoreBtn = false, isResponseBtn}) => {
     const [showMore, setShowMore] = useState(false);
     const messageRef = useRef<HTMLParagraphElement>(null);
     const [, setIsMeasured] = useState(false);
@@ -26,6 +28,8 @@ const CardBabysitter:React.FC<Props> = ({isMessage, isMoreBtn = false}) => {
             setIsMeasured(true);
         });
     }, [isMessage]);
+
+    const router = useRouter();
 
     return (
         <div className={styles['card-babysit']}>
@@ -134,7 +138,7 @@ const CardBabysitter:React.FC<Props> = ({isMessage, isMoreBtn = false}) => {
                 Творческая, смелая, эмпатичная, умею мечтать и исполнять мечты, аналитическое и критическое мышление, эмоционально зрелая. Пробую, ошибаюсь, снова пробую, иду к своим целям и желаниям…
             </p>
 
-            <AudioPlayer />
+            <AudioPlayer  />
 
             <span className={styles['card-babysit__text1']}>
                 <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -162,8 +166,15 @@ const CardBabysitter:React.FC<Props> = ({isMessage, isMoreBtn = false}) => {
             </div>
 
             {
+                isResponseBtn &&
+                <button onClick={() => router.push('/profile-parent/response')} className={styles['card-babysit__btn-more']}>
+                    Откликнуться
+                </button>
+            }
+
+            {
                 isMoreBtn && 
-                <button className={styles['card-babysit__btn-more']}>
+                <button onClick={() => router.push('/profile-parent/response')} className={styles['card-babysit__btn-more']}>
                     Подробнее
                 </button>
             }

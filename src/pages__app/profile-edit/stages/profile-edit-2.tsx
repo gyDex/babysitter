@@ -1,9 +1,13 @@
 import Calendar from "@/widgets/Calendar/Calendar"
 import styles from './profile-edit-stage.module.scss';
-import { useEditStage } from "@/entities/stores/useEditStage";
+import { useEditParentStage } from "@/entities/stores/useEditParentStage";
+import { useAnketsParent } from "@/entities/stores/useAnketsParent";
+
 
 const ProfileEditTwoStage = () => {
-  const stage = useEditStage();
+  const stage = useEditParentStage();
+
+  const { calendar, changeCalendar } = useAnketsParent();
 
   return (
     <div className={styles['profile-edit-stage']}>
@@ -23,7 +27,7 @@ const ProfileEditTwoStage = () => {
 
       <h2 className={styles['profile-edit-stage__title']}>Выберите подходящие вам дни и время работы</h2>
 
-      <Calendar />
+      <Calendar items={calendar} setitems={changeCalendar} />
 
       <div className={styles['profile-edit-stage__bottom']}>
         <button onClick={() => stage.setStage('first')} className={styles['profile-edit-stage__btn-bottom_prev']}>

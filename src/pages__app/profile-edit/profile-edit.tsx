@@ -1,6 +1,5 @@
 'use client'
 
-import { useEditStage } from '@/entities/stores/useEditStage';
 import styles from './profile-edit.module.scss'
 import ProfileEditOneStage from './stages/profile-edit-1';
 import ProfileEditTwoStage from './stages/profile-edit-2';
@@ -12,19 +11,23 @@ import ProfileEditSevenStage from './stages/profile-edit-7';
 import { useEffect } from 'react';
 import { useHeader } from '@/entities/stores/useHeader';
 import HeaderMenu from '@/widgets/HeaderMenu/HeaderMenu';
-
+import { useEditParentStage } from '@/entities/stores/useEditParentStage';
 const ProfileParentEditPage = () => {
-    const stage = useEditStage();
+    const stage = useEditParentStage();
 
     const headerState = useHeader();
+
     
     useEffect(() => {
         headerState.setTransparent(false);
+
     }, [])
 
     return (
         <>
             <HeaderMenu />
+
+
 
             <section className={styles['profile-edit']}>
                 <div className={styles['profile-edit__container']}>

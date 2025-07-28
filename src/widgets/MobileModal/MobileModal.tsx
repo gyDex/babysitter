@@ -9,22 +9,28 @@ const MobileModal = ({
   isOpen,
   setOpen,
   children,
-  title,next,
+  onClose,
+  title,
+  next,
   button_title = 'Сохранить',
   variation,
+  btn
 }: {
   isOpen: boolean
   setOpen: (open: boolean, type:string) => void,
-  next: () => void,
+  next?: () => void,
+  onClose?: () => void,
   children?: React.ReactNode,
   title: string | React.ReactNode,
   button_title?: string,
-  variation?: 'filter'
+  variation?: 'filter',
+  btn?: boolean,
 }) => {
   const y = useMotionValue(0)
 
   const handleOverlayClick = () => {
-    setOpen(false, 'role')
+      setOpen(false, 'role')
+      onClose?.();
   }
 
   const stopClickPropagation = (e: React.MouseEvent) => {
@@ -82,7 +88,10 @@ const MobileModal = ({
               </div>
 
               {children}
-              <Button onClick={next} text={button_title} variation="second" type="button" />
+              {
+                btn &&
+                <Button onClick={next} text={button_title} variation="second" type="button" />
+              }
             </div>
           </motion.div>
         </div>

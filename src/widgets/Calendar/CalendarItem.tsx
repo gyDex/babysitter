@@ -1,13 +1,16 @@
+'use client'
+
 import { useState } from 'react';
 import styles from './Calendar.module.scss';
 
-const CalendarItem = ({isActive, isEdit} : {isActive?: boolean, isEdit?:boolean}) => {
+const CalendarItem = ({setActive, isActive, isEdit} : {setActive: () => void, isActive?: boolean, isEdit?:boolean}) => {
     const [isSelect, setSelect] = useState(false);
 
     return (
         <div onClick={() => {
             if(isEdit) {
                 setSelect(prev => !prev)
+                setActive();
             }
         }} className={isEdit ? styles['calendar__right-content-item'] : styles['calendar__right-content-item_noedit']}>
             {

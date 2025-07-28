@@ -5,7 +5,7 @@ interface EditStage {
   setStage: (stage: any) => void
 }
 
-export const useEditStage = create<EditStage>()((set) => ({
+export const useEditParentStage = create<EditStage>()((set) => ({
   stage: 'first',
   setStage: (stage) => set(() => ({ stage: stage })),
 }))

@@ -1,6 +1,11 @@
 import styles from './AudioPlayer.module.scss'
 
-const AudioPlayer = () => {
+type Props = {
+    onClick?: () => void;
+    isEdit?: boolean
+}
+
+const AudioPlayer:React.FC<Props> = ({onClick, isEdit}) => {
   return (
     <div className={styles['audio-player']}>
         <button className={styles['audio-player__play']}>
@@ -90,6 +95,13 @@ const AudioPlayer = () => {
                 4:08
             </span>
         </div>
+
+        {
+            isEdit && <button onClick={onClick} className={styles['audio-player__btn-edit']}>
+                Изменить аудиодорожку
+            </button>
+        }
+
     </div>
   )
 }

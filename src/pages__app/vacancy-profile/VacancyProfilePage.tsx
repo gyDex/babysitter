@@ -2,22 +2,35 @@
 
 import Button from '@/shared/compontents/Button'
 import styles from  './VacancyProfilePage.module.scss'
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import ResponseFeedback from '@/widgets/ResponseFeedback/ResponseFeedback'
 import CardBabysitter from '@/widgets/CardBabysitter/CardBabysitter'
 import { useHeader } from '@/entities/stores/useHeader'
 import HeaderMenu from '@/widgets/HeaderMenu/HeaderMenu'
+import { useRouter } from 'next/navigation'
 
-const VacancyProfilePage = () => {
+type Props = {
+  empty?: boolean
+}
+
+const VacancyProfilePage:React.FC<Props> = ({empty = false}) => {
     const [isCreate, setCreate] = useState(false);
 
-    const [responses, ] = useState([1]);
+    const [responses, setResponses] = useState([1]);
 
     const headerState = useHeader();
+
+    const router = useRouter();
   
     useEffect(() => {
       headerState.setTransparent(false);
     }, [])
+
+    useEffect(() => {
+      if(empty) {
+        setResponses([]);  
+      }
+    }, [empty])
 
     return (
       <>
@@ -56,7 +69,7 @@ const VacancyProfilePage = () => {
                                     Вы можете сами найти специалиста в базе нянь 
                                   </span>
                                   
-                                  <Button  text='Перейти в базу нянь' variation='second' type='button'></Button>
+                                  <Button onClick={() => router.push('/profile-parent/base-data')} text='Перейти в базу нянь' variation='second' type='button'></Button>
                               </div>
                           }
 
@@ -65,7 +78,7 @@ const VacancyProfilePage = () => {
                                 <h2 className={styles['vacancy-profile__res-title']}>Отклики</h2>
 
                                 <div className={styles['vacancy-profile__list']}>
-                                  <CardBabysitter isMessage={'Здравствуйте, Анна! Меня зовут Алиса, я няня с более чем 6-летним опытом работы с детьми от 1 до 7 лет. Я очень заинтересована в вашей вакансии и хотела бы помочь вам в заботе о Марке'} />
+                                  <CardBabysitter  isMessage={'Здравствуйте, Анна! Меня зовут Алиса, я няня с более чем 6-летним опытом работы с детьми от 1 до 7 лет. Я очень заинтересована в вашей вакансии и хотела бы помочь вам в заботе о Марке'} />
                                   <CardBabysitter isMessage={'Здравствуйте, Анна! Меня зовут Алиса, я няня с более чем 6-летним опытом работы с детьми от 1 до 7 лет. Я очень заинтересована в вашей вакансии и хотела бы помочь вам в заботе о Марке'} />
                                 </div>
                               </div>

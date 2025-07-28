@@ -6,20 +6,22 @@ import { CSSProperties, useState } from 'react'
 
 type Props = {
   type: 'submit' | 'button',
-  variation?: 'second' | 'three' | 'four',
+  variation?: 'second' | 'three' | 'four' | 'five',
   text: string,
-  onClick?: () => void,
+  onClick?: any,
   style?: CSSProperties,
   heart?: boolean,
+  hoverChild?: React.ReactNode,
 }
 
-const Button: React.FC<Props> = ({ variation, style, text, onClick, heart = true }) => {
+const Button: React.FC<Props> = ({ variation, style, text, onClick, heart = true, hoverChild }) => {
   const [isHover, setHover] = useState(false)
 
   const variationClassMap: Record<string, string> = {
     second: styles['button-sec'],
     three: styles['button-three'],
     four: styles['button-four'], 
+    five: styles['button-five'], 
   }
 
   const buttonClass = variation ? variationClassMap[variation] || styles['button'] : styles['button']
@@ -31,21 +33,34 @@ const Button: React.FC<Props> = ({ variation, style, text, onClick, heart = true
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
       className={buttonClass}
-    >
-      {text}
+    > 
+
+
+      {
+        (hoverChild && isHover) ? <>
+          {hoverChild}
+        </>
+        :
+        text
+      }
 
         {
             variation !== 'four' && heart && <>
 
             { variation !== 'three' ? (
                     isHover ? (
-                    <Image
-                        className={styles['button__image']}
-                        src="/images/main-hero/heart.png"
-                        alt="heart"
-                        width={38}
-                        height={38}
-                    />
+                      <>
+                        {
+                            hoverChild === undefined &&
+                            <Image
+                                className={styles['button__image']}
+                                src="/images/main-hero/heart.png"
+                                alt="heart"
+                                width={38}
+                                height={38}
+                            />
+                        }
+                      </>
                     ) : (
                     <Image
                         className={styles['button__image']}
