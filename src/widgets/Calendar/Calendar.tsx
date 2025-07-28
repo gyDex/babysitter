@@ -7,7 +7,7 @@ import CalendarItem from './CalendarItem'
 type Props = {
     isEdit?: boolean,
     items?: any,
-    setitems: (value: any) => void;
+    setitems?: (value: any) => void;
 }
 
 const Calendar:React.FC<Props> = ({isEdit = true, items = [], setitems}) => {
@@ -16,8 +16,9 @@ const Calendar:React.FC<Props> = ({isEdit = true, items = [], setitems}) => {
     useEffect(() => {
         const allFalse = Items.every((item) => item === false);
 
-        if (!allFalse) {
-             setitems(Items);
+        if (!allFalse && setItems !== undefined) {
+            // @ts-ignore
+            setitems(Items);
         }
     },[Items])
 

@@ -486,7 +486,7 @@ const ResponsePage = () => {
 
                 {
                   selectedTab === 'chart' &&             <div className={styles['response__content-inner']}>
-                      <Calendar isEdit={false} items={[
+                      <Calendar  isEdit={false} items={[
                         false, false, true, false, true,false, false,
                         false, false, true, true, true,false, false,
                         true, false, false, false, false,true, false,

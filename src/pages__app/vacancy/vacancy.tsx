@@ -10,7 +10,7 @@ type Props = {
 }
 
 const VacancyPage:React.FC<Props> = ({empty = false}) => {
-    const [setResponses] = useState([1]);
+    const [setResponses] = useState([1]) as any;
 
     const headerState = useHeader();
   
